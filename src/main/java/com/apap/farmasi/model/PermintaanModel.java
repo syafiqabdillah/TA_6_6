@@ -55,7 +55,7 @@ public class PermintaanModel implements Serializable{
 	@JoinColumn(name = "id_jadwal", referencedColumnName = "id", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
-	private StatusPermintaanModel jadwalPermintaan;
+	private JadwalJagaModel jadwalPermintaan;
 
 	public long getId() {
 		return id;
@@ -105,11 +105,11 @@ public class PermintaanModel implements Serializable{
 		this.statusPermintaan = statusPermintaan;
 	}
 
-	public StatusPermintaanModel getJadwalPermintaan() {
+	public JadwalJagaModel getJadwalPermintaan() {
 		return jadwalPermintaan;
 	}
 
-	public void setJadwalPermintaan(StatusPermintaanModel jadwalPermintaan) {
+	public void setJadwalPermintaan(JadwalJagaModel jadwalPermintaan) {
 		this.jadwalPermintaan = jadwalPermintaan;
 	}
 	
