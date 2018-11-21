@@ -8,7 +8,7 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 
-<body>
+<body class="bg-light">
 	<nav th:replace="fragments/fragment :: navbar"></nav>
 	
     <div class="container-fluid">
@@ -16,46 +16,36 @@
         <h3>Selamat Datang di SI Farmasi !!</h3>
         
         <br>
-        
         <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        Tambah User Baru
-                    </div>
-                    <div class="card-body">
-                      	<form id="form" th:action="@{/user/addUser}" method="post">
-                      		<div class="row form-group">
-                      			<label class="col-sm-4"> User Name</label>
-                      			<input class="col-sm-8 form-control input-sm" type="text" name="username"/>
-                      		</div>
-                      		<div class="row form-group">
-                      			<label class="col-sm-4"> Password </label>
-                      			<input class="col-sm-8 form-control input-sm" type="password" name="password"/>
-                      		</div>
-                      		<div class="row form-group">
-                      			<label class="col-sm-4">Role</label>
-                      			<select class="col-sm-8 form-control" name="role">
-	                      			<option disabled="disabled" selected="selected">-- Pilih Role --</option>
-									<option th:value="ADMIN_FARMASI">Admin Farmasi</option>
-									<option th:value="STAF_APOTEKER">Staf Apoteker</option>
-								</select>
-                      		</div>
-                      		<div>
-                      			<button id="btn1" type="submit" class="btn btn-primary">Simpan</button>
-                      		</div>
-                      	</form>
-                    </div>
-                </div>
-            </div>
+        	<div class="col-md-6">
+		        <div class="card">
+					<div class="card-header">
+					    Tambah User Baru
+					</div>
+					<div class="card-body">
+					  	<form th:action="@{/user/addUser}" method="post">
+					  		<div class="row form-group">
+					  			<label class="col-sm-4"> User Name</label>
+					  			<input class="col-sm-8 form-control input-sm" type="text" name="username"/>
+					  		</div>
+					  		<div class="row form-group">
+					  			<label class="col-sm-4"> Password </label>
+					  			<input class="col-sm-8 form-control input-sm" type="password" name="password"/>
+					  		</div>
+					  		<div class="row form-group">
+					  			<label class="col-sm-4"> Role </label>
+					  			<input class="col-sm-8 form-control input-sm" type="text" name="role"/>
+					  		</div>
+					  		<div>
+					  			<button type="submit" class="btn btn-primary">Simpan</button>
+					  		</div>
+					  	</form>
+					</div>
+				</div>
+			</div>
         </div>
     </div>
     
-    <script>
-    	$('#form').submit(function(e){
-    		$
-    	})
-    </script>
 </body>
 
 </html>
