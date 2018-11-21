@@ -21,22 +21,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 			.antMatchers("/css/**").permitAll()
 			.antMatchers("/js/**").permitAll()
-			.antMatchers("/medical-supplies/**").hasAnyAuthority("ADMIN_FARMASI")
-			.antMatchers("/medical-supplies/**").hasAnyAuthority("STAF_APOTEKER")
+			.antMatchers("/**").permitAll()
+			/*.antMatchers("/medical-supplies/**").hasAnyAuthority("ADMIN_FARMASI,STAF_APOTEKER")
 			.antMatchers("/medical-supplies/tambah").hasAnyAuthority("ADMIN_FARMASI")
 			.antMatchers("/medical-supplies/ubah/**").hasAnyAuthority("ADMIN_FARMASI")
-			.antMatchers("/medical-supplies/perencanaan/tambah").hasAnyAuthority("ADMIN_FARMASI")
-			.antMatchers("/medical-supplies/perencanaan").hasAnyAuthority("ADMIN_FARMASI")
-			.antMatchers("/medical-supplies/perencanaan").hasAnyAuthority("STAF_APOTEKER")
-			.antMatchers("/medical-supplies/permintaan/**").hasAnyAuthority("ADMIN_FARMASI")
-			.antMatchers("/medical-supplies/permintaan/**").hasAnyAuthority("STAF_APOTEKER")
+			.antMatchers("/medical-supplies/perencanaan").hasAnyAuthority("ADMIN_FARMASI","STAF_APOTEKER")
+			.antMatchers("/medical-supplies/perencanaan/tambah").hasAnyAuthority("STAF_APOTEKER")
+			.antMatchers("/medical-supplies/permintaan/**").hasAnyAuthority("ADMIN_FARMASI","STAF_APOTEKER")
 			.antMatchers("/medical-supplies/permintaan/ubah/**").hasAnyAuthority("ADMIN_FARMASI")
-			.antMatchers("/medical-supplies/jadwal-staf/**").hasAnyAuthority("ADMIN_FARMASI")
 			.antMatchers("/medical-supplies/jadwal-staf/tambah").hasAnyAuthority("ADMIN_FARMASI")
 			.antMatchers("/medical-supplies/jadwal-staf/**").hasAnyAuthority("ADMIN_FARMASI")
-			.antMatchers("/api/daftar-medical-service/**").hasAnyAuthority("ADMIN_IGD")
-			.antMatchers("/api/medical-supplies/**").hasAnyAuthority("ADMIN_RAWAT_INAP")
-			.antMatchers("/user/changePassword").hasAuthority("CHANGE_PASSWORD_PRIVILEGE")
+			.antMatchers("/medical-supplies/jadwal-staf/").hasAnyAuthority("ADMIN_FARMASI")
+			.antMatchers("/rawat-jalan/obat/tambah").hasAnyAuthority("ADMIN_FARMASI","STAF_APOTEKER")*/
 			.anyRequest().authenticated()
 			.and()
 			.formLogin()
@@ -46,15 +42,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
 			.permitAll();
 	}
-	
-	
-	/*@Autowired
-	public void configureGlobal (AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication()
-			.passwordEncoder(encoder())
-			.withUser("cokicoki").password(encoder().encode("enaksekali"))
-			.roles("USER");
-	}*/
 	
 	@Bean
 	public BCryptPasswordEncoder encoder() {
