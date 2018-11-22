@@ -44,14 +44,6 @@ public class StaffModel implements Serializable{
 	public void setNama(String nama) {
 		this.nama = nama;
 	}
-
-	public List<JadwalJagaModel> getListJadwalJaga() {
-		return listJadwalJaga;
-	}
-
-	public void setListJadwalJaga(List<JadwalJagaModel> listJadwalJaga) {
-		this.listJadwalJaga = listJadwalJaga;
-	}
 	
 	
 }
