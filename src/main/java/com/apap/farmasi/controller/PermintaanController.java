@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
 
 import com.apap.farmasi.model.PermintaanModel;
-import com.apap.farmasi.model.StaffModel;
 import com.apap.farmasi.service.PermintaanService;
 
 @Controller

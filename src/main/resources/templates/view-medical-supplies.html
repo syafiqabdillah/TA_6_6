@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>View Medical Supplies</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<script th:src="@{/js/bootsrap.min.js}"></script>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<style>
+p {
+    display: block;
+    margin-top: 0.1em;
+    margin-bottom:0.1em;
+    margin-left: 0;
+    margin-right: 0;
+}
+#box {
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+}
+</style>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar(title= 'View Pilot')"></nav>
+	<h2 id="box">Detail Medical Supplies</h2>
+	<div class="container-fluid">
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+					Detail Medical Supplies
+					</div>
+					<div class="card-body">
+						<div class="container">
+							<table width=80%>
+								<tr>
+									<th>Nama</th>
+									<td th:text="${medicalSupplies.nama}"></td>
+								</tr>
+								<tr>
+									<th>Jumlah</th>
+									<td th:text="${medicalSupplies.jumlah}"></td>
+								</tr>
+								<tr>
+									<th>Harga</th>
+									<td th:text="${medicalSupplies.price}"></td>
+								</tr>
+								<tr>
+									<th>Deskripsi</th>
+									<td th:text="${medicalSupplies.deskripsi}"></td>
+								</tr>
+								<tr>
+									<th>Jenis Medical Supplies</th>
+									<td th:text="${medicalSupplies.jenisMedicalSupplies.jenisMedicalSupplies}"></td>
+								</tr>
+								<tr>
+									<th>Medical Supplies Urgent</th>
+									<td><div th:switch="${medicalSupplies.jenisMedicalSupplies.urgent.flag}">
+										  <p th:case="1">Ya</p>
+										  <p th:case="0">Tidak</p>
+										</div>
+									</td>
+								</tr>		
+							</table>	
+						</div>
+					</div>
+				</div>
+				<form th:action="@{/medical-supplies/update/} + ${medicalSupplies.id}" id="box">
+					<button type="submit">Update Medical Supplies</button>
+				</form>
+			</div>
+		</div>
+	</div>			
+	
+
+
+</body>
+</html>

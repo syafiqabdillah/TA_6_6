@@ -19,4 +19,18 @@ public class MedicalSuppliesServiceImpl implements MedicalSuppliesService {
 	public List<MedicalSuppliesModel> getAll() {
 		return medicalSuppliesDb.findAll();
 	}
+
+	@Override
+	public MedicalSuppliesModel getMedicalSuppliesByNama(String nama) {
+		// TODO Auto-generated method stub
+		return medicalSuppliesDb.findByNama(nama);
+	}
+
+	
+
+	@Override
+	public MedicalSuppliesModel getMedicalSuppliesById(Long id) {
+		// TODO Auto-generated method stub
+		return medicalSuppliesDb.findMSById(id);
+	}
 }
