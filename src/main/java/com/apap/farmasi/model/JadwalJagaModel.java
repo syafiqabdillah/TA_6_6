@@ -46,9 +46,11 @@ public class JadwalJagaModel implements Serializable{
 	@JsonIgnore
 	private List<PermintaanModel> listPermintaan;
 	
-	@NotNull
-	@Column(name = "id_staff", nullable = false)
-	private int idStaff;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_staff", referencedColumnName = "id", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIgnore
+	private StaffModel staff;
 
 	public long getId() {
 		return id;
@@ -90,12 +92,12 @@ public class JadwalJagaModel implements Serializable{
 		this.listPermintaan = listPermintaan;
 	}
 
-	public int getIdStaff() {
-		return idStaff;
+	public StaffModel getStaff() {
+		return staff;
 	}
 
-	public void setIdStaff(int idStaff) {
-		this.idStaff = idStaff;
+	public void setStaff(StaffModel staff) {
+		this.staff = staff;
 	}
 
 	
