@@ -21,18 +21,18 @@
 					<th style="text-align: center">Jenis medical supplies</th>
 					<th style="text-align: center">Status permintaan</th>
 					<th style="text-align: center">Staf apoteker</th>
-					<th style="text-align: center">ID Pasien</th>
+					<th style="text-align: center">Nama Pasien</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="permintaan : ${listPermintaan}">
-					<td th:text="${permintaan.tanggal}"></td>
-					<td th:text="${permintaan.medicalSupplies.nama}"></td>
-					<td th:text="${permintaan.jumlahMedicalSupplies}"></td>
-					<td th:text="${permintaan.medicalSupplies.jenisMedicalSupplies.jenisMedicalSupplies}"></td>
-					<td th:text="${permintaan.statusPermintaan.nama}"></td>
-					<td th:text="${permintaan.jadwalPermintaan.staff.nama}"></td>
-					<td th:text="${permintaan.idPasien}"></td>
+				<tr th:each="detail : ${detail}">
+					<td th:text="${detail.permintaan.tanggal}"></td>
+					<td th:text="${detail.permintaan.medicalSupplies.nama}"></td>
+					<td th:text="${detail.permintaan.jumlahMedicalSupplies}"></td>
+					<td th:text="${detail.permintaan.medicalSupplies.jenisMedicalSupplies.jenisMedicalSupplies}"></td>
+					<td th:text="${detail.permintaan.statusPermintaan.nama}"></td>
+					<td th:text="${detail.namaStaff}"></td>
+					<td th:text="${detail.namaPasien}"></td>
 				</tr>
 			</tbody>
 		</table>

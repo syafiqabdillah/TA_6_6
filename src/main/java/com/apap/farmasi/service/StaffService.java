@@ -1,5 +1,10 @@
 package com.apap.farmasi.service;
 
+import java.io.IOException;
+import java.util.List;
+
+import com.apap.farmasi.model.StaffModel;
+
 public interface StaffService {
-	String getStaffName(long id);
+	List<StaffModel> getAll() throws IOException;
 }
