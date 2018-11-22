@@ -49,6 +49,8 @@ public class PerencanaanModel implements Serializable{
 	@JsonIgnore
 	private MedicalSuppliesModel medicalSupplies;
 
+	
+	
 	public long getId() {
 		return id;
 	}
