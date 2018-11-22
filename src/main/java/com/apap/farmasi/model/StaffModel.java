@@ -28,10 +28,6 @@ public class StaffModel implements Serializable{
 	@Size(max = 255)
 	@Column(name = "nama ", nullable = false)
 	private String nama;
-	
-	@OneToMany(mappedBy = "staff", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JsonIgnore
-	private List<JadwalJagaModel> listJadwalJaga;
 
 	public long getId() {
 		return id;
