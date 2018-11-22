@@ -50,6 +50,14 @@ public class JadwalJagaModel implements Serializable{
 	@Column(name = "id_staff", nullable = false)
 	private int idStaff;
 
+	public int getIdStaff() {
+		return idStaff;
+	}
+
+	public void setIdStaff(int idStaff) {
+		this.idStaff = idStaff;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -90,15 +98,7 @@ public class JadwalJagaModel implements Serializable{
 		this.listPermintaan = listPermintaan;
 	}
 
-	public int getIdStaff() {
-		return idStaff;
-	}
 
-	public void setIdStaff(int idStaff) {
-		this.idStaff = idStaff;
-	}
-
-	
-	
+		
 	
 }
