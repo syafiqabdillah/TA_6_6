@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import com.apap.farmasi.model.DetailPermintaanModel;
 import com.apap.farmasi.model.PasienModel;
 import com.apap.farmasi.model.PermintaanModel;
+import com.apap.farmasi.model.StaffModel;
 import com.apap.farmasi.service.PermintaanService;
 import com.apap.farmasi.service.StaffService;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -62,6 +63,9 @@ public class PermintaanController {
     	for (StaffModel staff : listStaff) {
     		listNamaStaff.add(staff.getNama());
     	}
+    	
+    	//API staff pake map 
+    	
     	
     	//API buat nama pasien 
     	String pathPasien = "http://si-appointment.herokuapp.com/api/getPasien?listId=";
