@@ -28,7 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 		Set<GrantedAuthority> grantedAuthorities = new HashSet<GrantedAuthority>();
 		grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole()));
 		
-		return new User(user.getUsername(), user.getPassword(), grantedAuthorities);
+		return new User(user.getUsername(), user.getPassword(), grantedAuthorities); 
 	}
 	
 	

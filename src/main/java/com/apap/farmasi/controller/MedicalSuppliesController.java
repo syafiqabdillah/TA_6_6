@@ -30,4 +30,5 @@ public class MedicalSuppliesController {
 		model.addAttribute("medicalSupplies", medicalSupplies);
 		return "view-medical-supplies";
 	}
+	
 }
