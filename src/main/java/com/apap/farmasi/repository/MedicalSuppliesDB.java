@@ -9,4 +9,6 @@ import com.apap.farmasi.model.MedicalSuppliesModel;
 
 @Repository
 public interface MedicalSuppliesDB extends JpaRepository<MedicalSuppliesModel, Long> {
+	MedicalSuppliesModel findByNama(String nama);
+	MedicalSuppliesModel findMSById(Long id);
 }

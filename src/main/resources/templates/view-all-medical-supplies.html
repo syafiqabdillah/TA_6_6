@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>View All</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<style>
+#box {
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+}
+</style>
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<h2 id="box">Daftar Medical Supplies</h2>
+	<br><br>
+	<div class="container">
+		<table id="table"  class="row-border cell-border hover order-column compact stripe">
+			<thead>
+				<tr>
+					<th style="text-align: center">Nama</th>
+					<th style="text-align: center">Jumlah</th>
+					<th style="text-align: center">Harga</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="medicalSupplies : *{listOfMedicalSupplies}">
+					<td><a th:href="@{'/medical-supplies/' + ${medicalSupplies.id}}" th:text="${medicalSupplies.nama}"></a></td>
+					<td th:text="${medicalSupplies.jumlah}"></td>
+					<td th:text="'Rp ' +${medicalSupplies.price}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+<script>
+
+	var editor;
+	$(document).ready( function () {
+		
+    $('#table').DataTable();
+} );
+</script>
+</html>
