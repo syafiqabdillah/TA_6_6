@@ -12,6 +12,8 @@
 	<link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.jqueryui.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
 </head>
 
 <body>
@@ -26,7 +28,7 @@
 					<td height="50">Id Staff :</td>
 					<td>
 						<span>
-							<select class="form-control" required="required" name="idStaff" id="idStaff" form="StaffForm">
+							<select name="idStaff" class="form-control" required="required" >
 						      <option disabled="disabled" selected="selected" >Pilih ID Staff</option>
 						      <option th:each="staff : ${listStaff}" th:value="${staff.id}" th:text="${staff.id} + ' - ' + ${staff.nama}" ></option>
 						    </select>
@@ -39,11 +41,11 @@
 				</tr>
 				<tr>
 					<td height="50">waktuMulai :</td>
-					<td><input type="time" required="required" name="waktuMulai"  min="9:00" max="18:00" th:value="${waktuMulai}"/></td>
+					<td><input type="time" required="required" name="waktuMulai" id="waktuMulai" min="1:00" max="23:00" th:value="${waktuMulai}"/></td>
 				</tr>
 				<tr>
 					<td height="50">waktuSelesai :</td>
-					<td><input type="time"  required="required" name="waktuSelesai"  min="9:00" max="18:00" th:value="*{waktuSelesai}" /></td>
+					<td><input type="time"  required="required" name="waktuSelesai" id="waktuSelesai" min="1:00" max="23:00" th:value="*{waktuSelesai}" /></td>
 				</tr>
 			</table>
 			<br>
@@ -52,22 +54,16 @@
 		</div>
 	</body>
 	
+	
 	<script th:inline="javascript">
-	$('#provinsi').change(
-	     function() {
-	         $.getJSON("/instansi/getFromProvinsi", {
-	             id : $(this).val(),
-	             ajax : 'true'
-	         }, function(data) {
-	             var html = '<option value="">Pilih Instansi</option>';
-	             var len = data.length;
-	             for ( var i = 0; i < len; i++) {
-	                 html += '<option value="' + data[i].id + '">'
-	                         + data[i].nama + '</option>';
-	             }
-	             html += '</option>';
-	             $('#instansi').html(html);
-	         });
+	$('#waktuMulai').change(
+		 function() {
+			var data = $('#waktuMulai').val()
+			var jam = data.substring(0, 2);
+			var menit = data.substring(2, 4);
+            var html = '<input type="time"  required="required" name="waktuSelesai" id="waktuSelesai" min="' 
+            		+ jam + ':' + menit + '" max="23:00" th:value="*{waktuSelesai}" />';
+            $('#waktuSelesai').html(html);
 	     });
 	</script>
 	

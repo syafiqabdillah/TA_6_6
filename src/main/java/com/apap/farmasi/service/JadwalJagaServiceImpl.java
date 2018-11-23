@@ -25,7 +25,7 @@ public class JadwalJagaServiceImpl implements JadwalJagaService{
 	@Override
 	public List<JadwalJagaModel> getAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return jadwalJagaDb.findAll();
 	}
 
 	@Override
