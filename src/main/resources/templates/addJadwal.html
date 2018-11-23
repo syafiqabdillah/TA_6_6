@@ -22,7 +22,7 @@
 <br>
 		<h3 style="text-align:center;">Tambah Jadwal Jaga</h3><hr>
 		<br>
-		<form th:action="@{/jadwal-jaga/add}" id="jadwalJagaForm" th:object="${jadwalJaga}" method="POST">
+		<form th:action="@{/medical-supplies/jadwal-staf/tambah}" id="jadwalJagaForm" th:object="${jadwalJaga}" method="POST">
 			<table id="jadwalJagaTable" class="display">
 				<tr>
 					<td height="50">Id Staff :</td>
@@ -54,8 +54,7 @@
 		</div>
 	</body>
 	
-	
-	<script th:inline="javascript">
+	<!--  <script th:inline="javascript">
 	$('#waktuMulai').change(
 		 function() {
 			var data = $('#waktuMulai').val()
@@ -65,7 +64,6 @@
             		+ jam + ':' + menit + '" max="23:00" th:value="*{waktuSelesai}" />';
             $('#waktuSelesai').html(html);
 	     });
-	</script>
-	
+	</script>-->
 	
 </html>

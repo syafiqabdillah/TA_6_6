@@ -16,20 +16,24 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name="staff")
-public class StaffModel implements Serializable{
+public class StaffModel implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@NotNull
 	@Size(max = 255)
-	@Column(name = "nama ", nullable = false)
+	@Column(name = "nama", nullable = false)
 	private String nama;
 	
 	public StaffModel(int id, @NotNull @Size(max = 255) String nama) {
 		super();
 		this.id = id;
 		this.nama = nama;
+	}
+	
+	public StaffModel() {
+		
 	}
 
 	

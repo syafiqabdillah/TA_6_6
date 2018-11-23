@@ -29,7 +29,7 @@ public class JadwalJagaController {
 	@Autowired
 	PermintaanService permintaanService;
 	
-	@RequestMapping(value = "/jadwal-jaga/add", method = RequestMethod.GET)
+	@RequestMapping(value = "medical-supplies/jadwal-staf/tambah", method = RequestMethod.GET)
 	public String addJadwalJagaGET(Model model) {
 		JadwalJagaModel jadwalJaga = new JadwalJagaModel();
 		model.addAttribute("jadwalJaga", jadwalJaga);
@@ -67,16 +67,16 @@ public class JadwalJagaController {
 		return "addJadwal";
 	}
 	
-	@RequestMapping(value = "/jadwal-jaga/add", method = RequestMethod.POST)
+	@RequestMapping(value = "medical-supplies/jadwal-staf/tambah", method = RequestMethod.POST)
 	public String addJadwalJaga(Model model, @ModelAttribute JadwalJagaModel jadwalJaga) {
 		
 		jadwalJagaService.addJadwalJaga(jadwalJaga);
 		
-		return "add";
+		return "redirect:";
 	}
 
 	//Menampilkan data seluruh jabatan (fitur 9)
-	@RequestMapping("/jadwal-jaga/viewall")
+	@RequestMapping("medical-supplies/jadwal-staf/")
 	public String viewAllJabatan(Model model) {
 		List<JadwalJagaModel> jadwalJaga = jadwalJagaService.getAll();
 		
