@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import com.apap.farmasi.model.DetailPermintaanModel;
 import com.apap.farmasi.model.PasienModel;
 import com.apap.farmasi.model.PermintaanModel;
+import com.apap.farmasi.model.StaffModel;
 //import com.apap.farmasi.model.StaffModel;
 import com.apap.farmasi.service.PermintaanService;
 import com.apap.farmasi.service.StaffService;
