@@ -2,6 +2,8 @@ package com.apap.farmasi.model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,15 +13,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -49,14 +47,6 @@ public class JadwalJagaModel implements Serializable{
 	@NotNull
 	@Column(name = "id_staff", nullable = false)
 	private int idStaff;
-
-	public int getIdStaff() {
-		return idStaff;
-	}
-
-	public void setIdStaff(int idStaff) {
-		this.idStaff = idStaff;
-	}
 
 	public long getId() {
 		return id;
@@ -98,7 +88,12 @@ public class JadwalJagaModel implements Serializable{
 		this.listPermintaan = listPermintaan;
 	}
 
+	public int getIdStaff() {
+		return idStaff;
+	}
 
-		
-	
+	public void setIdStaff(int idStaff) {
+		this.idStaff = idStaff;
+	}
+
 }

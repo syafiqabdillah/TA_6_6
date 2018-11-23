@@ -22,20 +22,29 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class StaffModel implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private int id;
 	
 	@NotNull
 	@Size(max = 255)
 	@Column(name = "nama ", nullable = false)
 	private String nama;
+	
+	public StaffModel(int id, @NotNull @Size(max = 255) String nama) {
+		super();
+		this.id = id;
+		this.nama = nama;
+	}
 
-	public long getId() {
+	
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+
+	public void setId(int id) {
 		this.id = id;
 	}
+
 
 	public String getNama() {
 		return nama;
