@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Detail Perencanaan</title>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	
+	<div class="container-fluid">
+		<div class="row">
+		  	<div class="col">
+		  		<br>
+		  		<div class="card">
+					<div class="card-header">
+						<h3>Detail Perencanaan</h3>
+					</div>
+					<div class="card-body">
+						<h3 th:text="'Nama Medical supplies : ' + ${perencanaan.medicalSupplies.nama}"></h3>
+						<h3 th:text="'Status : ' + ${perencanaan.status}"></h3>
+						<h3 th:text="'Tanggal : ' + ${perencanaan.tanggal}"></h3>
+						<h3 th:text="'Jumlah : ' + ${perencanaan.jumlah}"></h3>
+					</div>
+				</div>
+		  	</div>
+		</div>
+	</div>
+</body>
+
+</html>
