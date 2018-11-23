@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name="staff")
-public class StaffModel implements Serializable{
+public class StaffModel implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -30,6 +30,10 @@ public class StaffModel implements Serializable{
 		super();
 		this.id = id;
 		this.nama = nama;
+	}
+	
+	public StaffModel() {
+		
 	}
 
 	
@@ -50,6 +54,5 @@ public class StaffModel implements Serializable{
 	public void setNama(String nama) {
 		this.nama = nama;
 	}
-	
 	
 }

@@ -33,4 +33,10 @@ public class MedicalSuppliesServiceImpl implements MedicalSuppliesService {
 		// TODO Auto-generated method stub
 		return medicalSuppliesDb.findMSById(id);
 	}
+
+	@Override
+	public MedicalSuppliesModel save(MedicalSuppliesModel medicalSupplies) {
+		return medicalSuppliesDb.save(medicalSupplies);
+	}
+
 }

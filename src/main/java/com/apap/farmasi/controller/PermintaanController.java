@@ -2,19 +2,26 @@ package com.apap.farmasi.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 
 import com.apap.farmasi.model.DetailPermintaanModel;
-import com.apap.farmasi.model.PasienModel;
 import com.apap.farmasi.model.PermintaanModel;
 import com.apap.farmasi.model.StaffModel;
-//import com.apap.farmasi.model.StaffModel;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import com.apap.farmasi.model.PasienModel;
 import com.apap.farmasi.service.PermintaanService;
 import com.apap.farmasi.service.StaffService;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -29,7 +36,8 @@ public class PermintaanController {
 	@Autowired 
 	StaffService staffService;
 	
-	@GetMapping(value="/medical-supplies/permintaan")
+
+	@RequestMapping(value="/medical-supplies/permintaan/", method = RequestMethod.GET)
     public String viewAllPermintaan(Model model) throws IOException {
 		List<PermintaanModel> listPermintaan = permintaanService.getAll();
 		
@@ -42,68 +50,50 @@ public class PermintaanController {
     		listIdStaff.add(Long.toString(permintaan.getJadwalPermintaan().getIdStaff()));
     		listIdPasien.add(Long.toString(permintaan.getIdPasien()));
     	}
-    	
-    	//API buat nama staf 
-    	String path = "http://si-appointment.herokuapp.com/api/getStaff?listId=";
-    	for(String idStaff : listIdStaff) {
-    		path = path + idStaff + ",";
-    	}
-    	String ending = "&resultType=List";
-    	String url = path + ending;			
-    	//JSON data list nama staff dari API asdos
-    	String JSONstaff = restTemplate.getForObject(url, String.class);
+
     	//membuat Object mapper 
     	ObjectMapper mapper = new ObjectMapper();
-    	//melakukan mapping dari data 
-    	JsonNode jsonNode = mapper.readTree(JSONstaff);
-    	//mengambil result , yakni string of list nama staf of JSON 
-    	String result = jsonNode.get("result").toString();
-		//merubah string of list of JSON menjadi list of Staff 
-    	List<StaffModel> listStaff = mapper.readValue(result, new TypeReference<List<StaffModel>>(){});
-    	List<String> listNamaStaff = new ArrayList<>();
-    	for (StaffModel staff : listStaff) {
-    		listNamaStaff.add(staff.getNama());
-    	}
     	
     	//API staff pake map 
-    	
-    	
-    	//API buat nama pasien 
-    	String pathPasien = "http://si-appointment.herokuapp.com/api/getPasien?listId=";
-    	for(String idPasien : listIdPasien) {
-    		pathPasien = pathPasien + idPasien + ",";
+    	String pathMap = "http://si-appointment.herokuapp.com/api/getStaff?listId=";
+    	for(String idStaff : listIdStaff) {
+    		pathMap = pathMap + idStaff + ",";
     	}
-    	String endingPathPasien = "&resultType=List";
-    	String urlPasien = pathPasien + endingPathPasien;
-    	//JSON data list nama pasien dari API asdos
-    	String JSONpasien = restTemplate.getForObject(urlPasien, String.class);
-    	//mapping data 
-    	JsonNode jsonPasien = mapper.readTree(JSONpasien);
-    	//mengambil result 
-    	String resultPasien = jsonPasien.get("result").toString();
-    	//merubah string of list of JSON menjadi list of Pasien
-    	List<PasienModel> listPasien = mapper.readValue(resultPasien, new TypeReference<List<PasienModel>>(){});
-    	List<String> listNamaPasien = new ArrayList<>();
-    	for (PasienModel pasien : listPasien) {
-    		listNamaPasien.add(pasien.getNama());
+    	String endingPathMap = "&resultType=Map";
+    	String urlMap = pathMap + endingPathMap;  
+    	//json map 
+    	String jsonMapStaff = restTemplate.getForObject(urlMap, String.class);
+    	JsonNode jsonNodeMap = mapper.readTree(jsonMapStaff);
+    	//mengambil result , yakni map
+    	String resultMap = jsonNodeMap.get("result").toString();
+    	System.out.println("result map : " + resultMap);
+    	//merubah string of map of Json menjad map of Staff
+    	Map<String, StaffModel> mapStaff = mapper.readValue(resultMap, new TypeReference<HashMap<String, StaffModel>>(){});
+    	//membuat key list dari permintaan berisi id staff yang mau ditampilin namanya 
+    	ArrayList<String> listKeyIdStaff = new ArrayList<>();
+    	//memasukkan key berupa id staff 
+    	for (PermintaanModel permintaan : listPermintaan) {
+    		listKeyIdStaff.add(Integer.toString(permintaan.getJadwalPermintaan().getIdStaff()));
+    	}
+    	List<String> listNamaStaffPakeMap = new ArrayList<>();
+    	//mengisi nama staff berdasarkan keylist is staff
+    	for (String id : listKeyIdStaff) {
+    		listNamaStaffPakeMap.add(mapStaff.get(id).getNama());
+    	}
+    	System.out.println("nama staff pake map:");
+    	for (String nama : listNamaStaffPakeMap) {
+    		System.out.println(nama);
+    	}
+    	//gabungin permintaan dengan staf dari hasil pake map
+    	List<DetailPermintaanModel> detailPermintaanPakeMap = new ArrayList<>(); 
+    	
+    	for (int i = 0 ; i < listPermintaan.size() ; i++) {
+    		DetailPermintaanModel detailNew = new DetailPermintaanModel(listPermintaan.get(i), listNamaStaffPakeMap.get(i), "");
+    		detailPermintaanPakeMap.add(detailNew);
     	}
     	
-    	
-    	//menggabungkan permintaan, nama staf, dan nama pasien pada suatu object DetailPermintaan
-    	List<DetailPermintaanModel> detailPermintaan = new ArrayList<>();
-    	
-    	for (int i = 0 ; i < listNamaPasien.size() ; i++) {
-    		DetailPermintaanModel detail = new DetailPermintaanModel(listPermintaan.get(i), listNamaStaff.get(i), listNamaPasien.get(i));
-    		detailPermintaan.add(detail);
-    	}
-    	
-		model.addAttribute("detail", detailPermintaan);
+		model.addAttribute("detail", detailPermintaanPakeMap);
 		
     	return "view-all-permintaan";
     }
-	
-	private String getNamaStaff(long id) {
-		String result = "";
-		return result;
-	}
 }

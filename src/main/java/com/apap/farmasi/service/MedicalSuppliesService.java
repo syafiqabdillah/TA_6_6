@@ -8,4 +8,5 @@ public interface MedicalSuppliesService {
 	List<MedicalSuppliesModel> getAll();
 	MedicalSuppliesModel getMedicalSuppliesByNama(String nama);
 	MedicalSuppliesModel getMedicalSuppliesById(Long id);
+	MedicalSuppliesModel save(MedicalSuppliesModel medicalSupplies);
 }

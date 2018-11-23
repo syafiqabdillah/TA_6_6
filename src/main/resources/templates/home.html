@@ -42,6 +42,46 @@
 					  	</form>
 					</div>
 				</div>
+				<br>
+				<div class="card">
+					<div class="card-header">
+					    Melihat Daftar Medical Supplies
+					</div>
+					<div class="card-body">
+					  	<form th:action="@{/medical-supplies/}">
+					  		<div>
+					  			<button type="submit" class="btn btn-primary">Lihat Daftar</button>
+					  		</div>
+					  	</form>
+					</div>
+				</div>
+				
+				<br>
+				<div class="card">
+					<div class="card-header">
+					    Melihat Detail Semua Permintaan
+					</div>
+					<div class="card-body">
+					  	<form th:action="@{/medical-supplies/permintaan/}" method="get">
+					  		<div>
+					  			<button type="submit" class="btn btn-primary">Lihat Permintaan</button>
+					  		</div>
+					  	</form>
+					</div>
+				</div>
+				<br>
+				<div class="card">
+					<div class="card-header">
+					    Melihat Detail Semua Perencanaan
+					</div>
+					<div class="card-body">
+					  	<form th:action="@{/medical-supplies/perencanaan/}" method="get">
+					  		<div>
+					  			<button type="submit" class="btn btn-primary">Lihat Perencanaan</button>
+					  		</div>
+					  	</form>
+					</div>
+				</div>
 			</div>
         </div>
     </div>

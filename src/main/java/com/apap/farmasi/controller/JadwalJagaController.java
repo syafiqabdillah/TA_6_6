@@ -29,7 +29,7 @@ public class JadwalJagaController {
 	@Autowired
 	PermintaanService permintaanService;
 	
-	@RequestMapping(value = "/jadwal-jaga/add", method = RequestMethod.GET)
+	@RequestMapping(value = "medical-supplies/jadwal-staf/tambah", method = RequestMethod.GET)
 	public String addJadwalJagaGET(Model model) {
 		JadwalJagaModel jadwalJaga = new JadwalJagaModel();
 		model.addAttribute("jadwalJaga", jadwalJaga);
@@ -40,7 +40,6 @@ public class JadwalJagaController {
     	String staff = restTemplate.getForObject(url, String.class);
     	ObjectMapper mapper = new ObjectMapper();
 
-    	List<String> listIdStaff = new ArrayList<>();
     	List<String> listNamaStaff = new ArrayList<>();
     	List<StaffModel> listStaff = new ArrayList<>();
     	
@@ -64,26 +63,57 @@ public class JadwalJagaController {
     	} catch(Exception e) {}
     	
     	model.addAttribute("listStaff", listStaff);
-    	model.addAttribute("listIdStaff", listIdStaff);
-    	model.addAttribute("listNamaStaff", listNamaStaff);
     	
 		return "addJadwal";
 	}
 	
-	@RequestMapping(value = "/jadwal-jaga/add", method = RequestMethod.POST)
+	@RequestMapping(value = "medical-supplies/jadwal-staf/tambah", method = RequestMethod.POST)
 	public String addJadwalJaga(Model model, @ModelAttribute JadwalJagaModel jadwalJaga) {
 		
 		jadwalJagaService.addJadwalJaga(jadwalJaga);
 		
-		return "add";
+		return "redirect:";
 	}
 
-	@GetMapping(value="/jadwal-jaga/")
-    public String viewAllPermintaan(Model model) {
+	//Menampilkan data seluruh jabatan (fitur 9)
+	@RequestMapping("medical-supplies/jadwal-staf/")
+	public String viewAllJabatan(Model model) {
+		List<JadwalJagaModel> jadwalJaga = jadwalJagaService.getAll();
 		
-    	return "view-all-permintaan";
-    }
-	
+		//API get all staff
+		RestTemplate restTemplate = new RestTemplate();
+    	String url = "http://si-appointment.herokuapp.com/api/6/getAllStaffFarmasi";
+    	String staff = restTemplate.getForObject(url, String.class);
+    	ObjectMapper mapper = new ObjectMapper();
+
+    	List<String> listNamaStaff = new ArrayList<>();
+    	List<StaffModel> listStaff = new ArrayList<>();
+    	
+    	try {
+	    	JsonNode jsonNode = mapper.readTree(staff);
+	    	
+	    	//Iterasi result yang bentuknya list json
+	    	for (int i=0; i<jsonNode.get("result").size(); i++) {
+	    		//Ambil nama satu persatu
+	    		//Masukin ke list
+//			    		listIdStaff.add(jsonNode.get("result").get(i).get("id").toString());
+//			    		listNamaStaff.add(jsonNode.get("result").get(i).get("nama").toString());
+	    		
+	    		String id = jsonNode.get("result").get(i).get("id").toString();
+	    		String nama = jsonNode.get("result").get(i).get("nama").toString();
+	    		
+	    		StaffModel staffModel = new StaffModel(Integer.parseInt(id), nama);
+	    		listStaff.add(staffModel);
+	    	}
+			    	
+		    } catch(Exception e) {}
+		    
+		model.addAttribute("listStaff", listStaff);
+		
+		model.addAttribute("jadwalJaga", jadwalJaga);
+		
+		return "view-all-jadwal";
+	}
 
 }
 
