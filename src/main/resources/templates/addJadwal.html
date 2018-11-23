@@ -26,7 +26,7 @@
 					<td height="50">Id Staff :</td>
 					<td>
 						<span>
-							<select class="form-control" required="required" name="idStaff" id="idStaff" form="StaffForm">
+							<select class="form-control" required="required" name="idStaff" id="idStaff" form="StaffForm" th:value="${listStaff}">
 						      <option disabled="disabled" selected="selected" >Pilih ID Staff</option>
 						      <option th:each="staff : ${listStaff}" th:value="${staff.id}" th:text="${staff.id} + ' - ' + ${staff.nama}" ></option>
 						    </select>
