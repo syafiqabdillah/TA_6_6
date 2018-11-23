@@ -13,7 +13,6 @@ import com.apap.farmasi.model.MedicalSuppliesModel;
 import com.apap.farmasi.service.MedicalSuppliesService;
 import com.apap.farmasi.rest.ObatDetail;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 @Controller
@@ -45,7 +44,7 @@ public class MedicalSuppliesController {
 	
 	@RequestMapping(value = "/medical-supplies/{id}/{jumlah}")
 	private String checkOutSupplies(@PathVariable(value="id") long id,
-										@PathVariable(value="jumlah") int jumlah, Model model) {
+									@PathVariable(value="jumlah") int jumlah, Model model) {
 		//String path = "";
 		MedicalSuppliesModel obat = medicalSuppliesService.getMedicalSuppliesById(id);
 		ObatDetail obatDetail = new ObatDetail();

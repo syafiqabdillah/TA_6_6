@@ -22,8 +22,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/css/**").permitAll()
 			.antMatchers("/js/**").permitAll()
 			.antMatchers("/**").permitAll()
-			.antMatchers("/medical-supplies/**").hasAnyAuthority("ADMIN_FARMASI,STAF_APOTEKER")
 			/*
+			.antMatchers("/medical-supplies/**").hasAnyAuthority("ADMIN_FARMASI,STAF_APOTEKER")
+			
 			.antMatchers("/medical-supplies/tambah").hasAnyAuthority("ADMIN_FARMASI")
 			.antMatchers("/medical-supplies/ubah/**").hasAnyAuthority("ADMIN_FARMASI")
 			.antMatchers("/medical-supplies/perencanaan").hasAnyAuthority("ADMIN_FARMASI","STAF_APOTEKER")
