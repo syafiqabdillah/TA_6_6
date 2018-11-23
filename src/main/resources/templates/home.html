@@ -58,12 +58,51 @@
 				<br>
 				<div class="card">
 					<div class="card-header">
-					    Melihat Detail Semua Perencanaan
+					    Melihat Detail Perencanaan
 					</div>
 					<div class="card-body">
 					  	<form th:action="@{/medical-supplies/perencanaan/}" method="get">
 					  		<div>
 					  			<button type="submit" class="btn btn-primary">Lihat Perencanaan</button>
+					  		</div>
+					  	</form>
+					</div>
+				</div>
+				<br>
+				<div class="card">
+					<div class="card-header">
+					    Melihat Semua Medical Supplies
+					</div>
+					<div class="card-body">
+					  	<form th:action="@{/medical-supplies/}" method="get">
+					  		<div>
+					  			<button type="submit" class="btn btn-primary">Lihat Medical Supplies</button>
+					  		</div>
+					  	</form>
+					</div>
+				</div>
+				<br>
+				<div class="card">
+					<div class="card-header">
+					    Membuat Jadwal Jaga
+					</div>
+					<div class="card-body">
+					  	<form th:action="@{/medical-supplies/jadwal-staf/tambah}" method="get">
+					  		<div>
+					  			<button type="submit" class="btn btn-primary">Buat Jadwal Jaga</button>
+					  		</div>
+					  	</form>
+					</div>
+				</div>
+				<br>
+				<div class="card">
+					<div class="card-header">
+					    Melihat Jadwal Jaga
+					</div>
+					<div class="card-body">
+					  	<form th:action="@{/medical-supplies/jadwal-staf/}" method="get">
+					  		<div>
+					  			<button type="submit" class="btn btn-primary">Melihat Jadwal Jaga</button>
 					  		</div>
 					  	</form>
 					</div>
