@@ -23,7 +23,7 @@ public class StaffModel implements Serializable {
 	
 	@NotNull
 	@Size(max = 255)
-	@Column(name = "nama", nullable = false)
+	@Column(name = "nama ", nullable = false)
 	private String nama;
 	
 	public StaffModel(int id, @NotNull @Size(max = 255) String nama) {
@@ -54,6 +54,5 @@ public class StaffModel implements Serializable {
 	public void setNama(String nama) {
 		this.nama = nama;
 	}
-	
 	
 }
