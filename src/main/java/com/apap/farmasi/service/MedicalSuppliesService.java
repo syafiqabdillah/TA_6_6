@@ -9,4 +9,6 @@ public interface MedicalSuppliesService {
 	MedicalSuppliesModel getMedicalSuppliesByNama(String nama);
 	MedicalSuppliesModel getMedicalSuppliesById(Long id);
 	MedicalSuppliesModel save(MedicalSuppliesModel medicalSupplies);
+	void addMedicalSupplies(MedicalSuppliesModel medicalSupplies);
+	void updateMedicalSupplies(MedicalSuppliesModel newMedicalSupplies, Long id);
 }

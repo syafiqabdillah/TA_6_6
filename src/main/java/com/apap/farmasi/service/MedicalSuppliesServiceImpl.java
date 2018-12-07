@@ -39,4 +39,23 @@ public class MedicalSuppliesServiceImpl implements MedicalSuppliesService {
 		return medicalSuppliesDb.save(medicalSupplies);
 	}
 
+	@Override
+	public void addMedicalSupplies(MedicalSuppliesModel medicalSupplies) {
+		// TODO Auto-generated method stub
+		medicalSuppliesDb.save(medicalSupplies);
+		
+	}
+
+	@Override
+	public void updateMedicalSupplies(MedicalSuppliesModel newMedicalSupplies, Long id) {
+		// TODO Auto-generated method stub
+		MedicalSuppliesModel oldMedicalSupplies = medicalSuppliesDb.findMSById(id);
+		oldMedicalSupplies.setDeskripsi(newMedicalSupplies.getDeskripsi());
+		oldMedicalSupplies.setJenisMedicalSupplies(newMedicalSupplies.getJenisMedicalSupplies());
+		oldMedicalSupplies.setNama(newMedicalSupplies.getNama());
+		oldMedicalSupplies.setPrice(newMedicalSupplies.getPrice());
+		medicalSuppliesDb.save(oldMedicalSupplies);
+		
+	}
+
 }
