@@ -9,4 +9,5 @@ public interface MedicalSuppliesService {
 	MedicalSuppliesModel getMedicalSuppliesByNama(String nama);
 	MedicalSuppliesModel getMedicalSuppliesById(Long id);
 	MedicalSuppliesModel save(MedicalSuppliesModel medicalSupplies);
+	void updateJumlahMedsup(long id, int jumlah);
 }

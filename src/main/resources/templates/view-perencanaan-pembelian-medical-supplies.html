@@ -5,28 +5,44 @@
 	<title>Detail Perencanaan</title>
 	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body class="bg-light">
 	<nav th:replace="fragments/fragment :: navbar"></nav>
 	
-	<div class="container-fluid">
-		<div class="row">
-		  	<div class="col">
-		  		<br>
-		  		<div class="card">
-					<div class="card-header">
-						<h3>Detail Perencanaan</h3>
-					</div>
-					<div class="card-body">
-						<h3 th:text="'Nama Medical supplies : ' + ${perencanaan.medicalSupplies.nama}"></h3>
-						<h3 th:text="'Status : ' + ${perencanaan.status}"></h3>
-						<h3 th:text="'Tanggal : ' + ${perencanaan.tanggal}"></h3>
-						<h3 th:text="'Jumlah : ' + ${perencanaan.jumlah}"></h3>
-					</div>
-				</div>
-		  	</div>
-		</div>
+	<div class="container">
+	<br>
+	<div align="center"><img src="https://i.pinimg.com/originals/7e/88/cc/7e88cce2beec5f097aa60245d9d70fc0.png" height="100px" width="100px"/></div>
+	  <h2 style="text-align:center;">Detail Perencanaan </h2>
+	<br>             
+	  <table class="table table-striped">
+	    <thead>
+	      <tr>
+	        <th>Medical Supplies</th>
+	        <th>Status</th>
+	        <th>Tanggal</th>
+	        <th>Jumlah</th>
+	        <th>Ubah Status</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	    <tr th:each="perencanaan : ${listPerencanaan}">
+	    	<td th:text="${perencanaan.medicalSupplies.nama}"></td>
+	    	<td th:text="${perencanaan.status}"></td>
+	    	<td th:text="${perencanaan.tanggal}"></td>
+	    	<td th:text="${perencanaan.jumlah}"></td>
+	    	<td> 
+		    	<form th:action="@{/medical-supplies/updateStatus}" method="GET">
+					<input type="hidden" name="id" class="form-control" th:value="${perencanaan.id}"/>
+					<button type="submit" class="btn btn-primary">Ubah Status</button>
+				</form>
+	    	</td>
+	    </tr>
+	    </tbody>
+	  </table>
 	</div>
 </body>
 

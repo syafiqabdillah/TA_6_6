@@ -22,21 +22,24 @@ public class MedicalSuppliesServiceImpl implements MedicalSuppliesService {
 
 	@Override
 	public MedicalSuppliesModel getMedicalSuppliesByNama(String nama) {
-		// TODO Auto-generated method stub
 		return medicalSuppliesDb.findByNama(nama);
 	}
 
-	
-
 	@Override
 	public MedicalSuppliesModel getMedicalSuppliesById(Long id) {
-		// TODO Auto-generated method stub
 		return medicalSuppliesDb.findMSById(id);
 	}
 
 	@Override
 	public MedicalSuppliesModel save(MedicalSuppliesModel medicalSupplies) {
 		return medicalSuppliesDb.save(medicalSupplies);
+	}
+
+	@Override
+	public void updateJumlahMedsup(long id, int jumlah) {
+		MedicalSuppliesModel medsup = getMedicalSuppliesById(id);
+		medsup.setJumlah(medsup.getJumlah() + jumlah);
+		medicalSuppliesDb.save(medsup);
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.apap.farmasi.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -17,6 +18,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -26,9 +28,8 @@ public class PerencanaanModel implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotNull
 	@Column(name = "tanggal", nullable = false)
-	private Timestamp tanggal;
+	private Date tanggal;
 	
 	@NotNull
 	@Size(max = 255)
@@ -59,11 +60,11 @@ public class PerencanaanModel implements Serializable{
 		this.id = id;
 	}
 
-	public Timestamp getTanggal() {
+	public Date getTanggal() {
 		return tanggal;
 	}
 
-	public void setTanggal(Timestamp tanggal) {
+	public void setTanggal(Date tanggal) {
 		this.tanggal = tanggal;
 	}
 

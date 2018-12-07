@@ -16,9 +16,24 @@ public class PerencanaanServiceImpl implements PerencanaanService{
 	PerencanaanDB perencanaanDb;
 	
 	@Override
-	public PerencanaanModel getPerencanaan() {
-		List<PerencanaanModel> listPerencanaan = perencanaanDb.findAll();
-		return listPerencanaan.get(0);
+	public PerencanaanModel getPerencanaan(long id) {
+		return perencanaanDb.findById(id).get();
+	}
+
+	@Override
+	public void updateStatusPerencanaan(PerencanaanModel oldP, PerencanaanModel newP) {
+		oldP.setStatus(newP.getStatus());
+		perencanaanDb.save(oldP);
+	}
+
+	@Override
+	public void addPerencanaan(PerencanaanModel perencanaan) {
+		perencanaanDb.save(perencanaan);
+	}
+
+	@Override
+	public List<PerencanaanModel> getAll() {
+		return perencanaanDb.findAll();
 	}
 
 }

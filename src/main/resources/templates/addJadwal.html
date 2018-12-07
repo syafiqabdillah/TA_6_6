@@ -12,14 +12,15 @@
 	<link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.jqueryui.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 	
 </head>
 
-<body>
+<body class="bg-light">
 <nav th:replace="fragments/fragment :: navbar"></nav>
 <div class="container">
 <br>
+	<div align="center"><img src="https://i.pinimg.com/originals/7e/88/cc/7e88cce2beec5f097aa60245d9d70fc0.png" height="100px" width="100px"/></div>
 		<h3 style="text-align:center;">Tambah Jadwal Jaga</h3><hr>
 		<br>
 		<form th:action="@{/medical-supplies/jadwal-staf/tambah}" id="jadwalJagaForm" th:object="${jadwalJaga}" method="POST">

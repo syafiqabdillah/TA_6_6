@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Home</title>
+    <title>SI Farmasi</title>
 
     <head th:fragment="css">
         <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
@@ -14,8 +14,11 @@
 </head>
 
 <body>
-    <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">APAP</a>
+    <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-info">
+        <a class="navbar-brand" th:href="@{/}">
+			<img src="https://i.pinimg.com/originals/7e/88/cc/7e88cce2beec5f097aa60245d9d70fc0.png" height="35px" width="35px"/>
+		</a>
+		<a class="navbar-brand" th:href="@{/}">SI Farmasi</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">

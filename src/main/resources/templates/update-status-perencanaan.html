@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Ubah Status Perencanaan</title>
+	
+	<object th:include="fragments/fragment :: css" th:remove="tag">/</object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body class="bg-light">
+	<nav th:replace="fragments/fragment :: navbar(name='Home')"></nav>
+	
+	<div class="container-fluid">
+	<br>
+	<div align="center"><img src="https://i.pinimg.com/originals/7e/88/cc/7e88cce2beec5f097aa60245d9d70fc0.png" height="100px" width="100px"/></div>
+	<h3 style="text-align:center;">Ubah Status Perencanaan</h3>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="container-fluid bg-3 "></div>
+			<div class="container-fluid bg-6 ">
+				<div class="row">
+					<div class="col-sm-3"></div>
+					<div class="col-sm-6">
+						<div class="card">
+							<div class="card-header bg-info" style="text-align:center;color:white" th:text="'Perencanaan P-' + ${perencanaan.id}">
+							</div>
+							<div class="card-body">
+								<form th:action="@{/medical-supplies/updateStatus}" method="post">
+								
+								  	<div class="row form-group">
+							  			<label for="id_medical_supplies" class="col-sm-8 col-form-label">Medical Supplies</label>
+									    <div class="col-sm-3">
+											<p th:text="${perencanaan.medicalSupplies.nama}"></p>
+									    </div>
+							  		</div>
+							  		
+							  		<div class="row form-group">
+							  			<label for="tanggal" class="col-sm-8 col-form-label">Tanggal</label>
+									  	<div class="col-sm-3">
+									     	<p th:text="${perencanaan.tanggal}"></p>
+									   	</div>
+							  		</div>
+						  		
+							  		<div class="row form-group">
+							  			<label for="jumlah" class="col-sm-8 col-form-label">Jumlah</label>
+									   	<div class="col-sm-3">
+									   		<p th:text="${perencanaan.jumlah}"></p>
+									   	</div>
+							  		</div>
+							  		
+							  		<input type="hidden" name="id" th:value="${perencanaan.id}">
+									<input type="hidden" name="nama" th:value="'sebuah perencanaan'">
+									
+									<div class="form-group row">
+									   <label for="jumlah" class="col-sm-8 col-form-label">Status</label>
+									   <div class="col-sm-3">
+									   		<select class="form-control" required="required" name="status" id="jenisKelamin">
+							                    <option disabled="disabled" selected="selected" th:text="${perencanaan.status}"></option>
+							                    <option value="Diajukan">Diajukan</option>
+							                    <option value="Diproses">Diproses</option>
+							                    <option value="Tersedia">Tersedia</option>
+								            </select>
+									   </div>
+									</div>
+									
+							  		<div align="center">
+							  			<button type="submit" class="btn btn-primary">Simpan</button>
+							  		</div>
+								  	</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
