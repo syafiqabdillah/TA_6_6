@@ -6,10 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.apap.farmasi.model.JenisMedicalSuppliesModel;
 import com.apap.farmasi.model.MedicalSuppliesModel;
+import com.apap.farmasi.service.JenisMedicalSuppliesService;
 import com.apap.farmasi.service.MedicalSuppliesService;
 import com.apap.farmasi.rest.ObatDetail;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +24,9 @@ public class MedicalSuppliesController {
 	@Autowired
 	private MedicalSuppliesService medicalSuppliesService;
 
+	@Autowired
+	private JenisMedicalSuppliesService jenisMedicalSuppliesService;
+	
 	@Autowired
 	RestTemplate restTemplate;
 
@@ -36,10 +43,38 @@ public class MedicalSuppliesController {
 	}
 	
 	@RequestMapping(value="/medical-supplies/{id}", method = RequestMethod.GET)
-	private String viewPilot(@PathVariable("id") long id, Model model ) {
+	private String viewMedicalSupplies(@PathVariable("id") long id, Model model ) {
 		MedicalSuppliesModel medicalSupplies = medicalSuppliesService.getMedicalSuppliesById(id);
 		model.addAttribute("medicalSupplies", medicalSupplies);
 		return "view-medical-supplies";
+	}
+	
+	@RequestMapping(value="/medical-supplies/tambah", method = RequestMethod.GET)
+	private String add(Model model) {
+		List<JenisMedicalSuppliesModel> listOfJenisMedicalSupplies = jenisMedicalSuppliesService.getAll();
+		model.addAttribute("medicalSupplies", new MedicalSuppliesModel());
+		model.addAttribute("jenisMedicalSupplies", listOfJenisMedicalSupplies);
+		return "add-medical-supplies";
+	}
+	
+	@RequestMapping(value="/medical-supplies/tambah", method = RequestMethod.POST)
+	private String addMedicalSuppliesSubmit(@ModelAttribute MedicalSuppliesModel medicalSupplies) {
+		medicalSuppliesService.addMedicalSupplies(medicalSupplies);
+		return "added-medical-supplies";
+	}
+	
+	@RequestMapping(value="/medical-supplies/ubah/{id}", method=RequestMethod.GET)
+	private String updateMedicalSupplies(@PathVariable("id") long id, Model model) {
+		MedicalSuppliesModel medicalSupplies = medicalSuppliesService.getMedicalSuppliesById(id);
+		model.addAttribute("medicalSupplies", medicalSupplies);
+		List<JenisMedicalSuppliesModel> listOfJenisMedicalSupplies = jenisMedicalSuppliesService.getAll();
+		model.addAttribute("jenisMedicalSupplies", listOfJenisMedicalSupplies);
+		return "update-medical-supplies";
+	}
+	@RequestMapping (value = "/medical-supplies/ubah", method = RequestMethod.POST)
+	private String updateMedicalSuppliesSubmit(@ModelAttribute MedicalSuppliesModel medicalSupplies){
+		medicalSuppliesService.updateMedicalSupplies(medicalSupplies, medicalSupplies.getId());
+		return "updated-medical-supplies";
 	}
 	
 	@RequestMapping(value = "/medical-supplies/{id}/{jumlah}")
