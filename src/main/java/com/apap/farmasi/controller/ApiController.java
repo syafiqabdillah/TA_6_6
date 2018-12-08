@@ -1,12 +1,19 @@
 package com.apap.farmasi.controller;
 
+import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.apap.farmasi.model.JadwalJagaModel;
 import com.apap.farmasi.model.PasienModel;
 import com.apap.farmasi.model.PermintaanModel;
+import com.apap.farmasi.rest.BillingDetail;
 import com.apap.farmasi.rest.TambahPermintaanDetail;
 import com.apap.farmasi.service.JadwalJagaService;
 import com.apap.farmasi.service.PermintaanService;
@@ -38,23 +45,41 @@ public class ApiController {
 	}
 
 	@PostMapping(value="/medical-supplies/permintaan/")
-	public List<PermintaanModel> createPermintaan(@RequestBody TambahPermintaanDetail permintaanDetail) {
-		List<PermintaanModel> result = new ArrayList<PermintaanModel>();
-		for (TambahPermintaanDetail.DetailRequest obat : permintaanDetail.getDetails()) {
+	public PermintaanModel createPermintaan(@RequestBody TambahPermintaanDetail permintaanDetail) {
 			PermintaanModel permintaan = new PermintaanModel();
 			permintaan.setIdPasien(permintaanDetail.getIdPasien());
-			permintaan.setMedicalSupplies(medicalSuppliesService.getMedicalSuppliesById(obat.getId()));
+			permintaan.setMedicalSupplies(medicalSuppliesService.getMedicalSuppliesByNama(permintaanDetail.getNamaObat()));
 			permintaan.setTanggal(Timestamp.valueOf(LocalDateTime.now()));
-			permintaan.setJumlahMedicalSupplies(obat.getJumlah());
-			permintaan.setStatusPermintaan(statusPermintaanService.findById('1'));
-			//set default
-			permintaan.setJadwalPermintaan(jadwalJagaService.getJadwalJagaById(Long.parseLong("1")));
+			permintaan.setJumlahMedicalSupplies(permintaanDetail.getJumlah());
+			permintaan.setStatusPermintaan(statusPermintaanService.findById(1));
 
-			permintaanService.save(permintaan);
-			result.add(permintaan);
-		}
-		return result;
+			//kalau tidak ada staff yg jaga, jadwal jaga default id 1
+			List<JadwalJagaModel> allJadwal = jadwalJagaService.getAll();
+			boolean isStaffPresent = false;
+			for (JadwalJagaModel jadwal : allJadwal) {
+				Timestamp mulai = jadwal.getWaktuMulaiTs();
+				Timestamp selesai = jadwal.getWaktuSelesaiTs();
+				Timestamp waktuPermintaan = Timestamp.valueOf(LocalDateTime.now());
+
+				if (waktuPermintaan.after(mulai) && waktuPermintaan.before(selesai)) {
+					permintaan.setJadwalPermintaan(jadwal);
+					isStaffPresent = true;
+				}
+			}
+			if(!isStaffPresent)
+				permintaan.setJadwalPermintaan(jadwalJagaService.getJadwalJagaById(Long.parseLong("1")));
+
+			return permintaanService.save(permintaan);
 	}
 
+	@GetMapping(value="/test")
+	public BillingDetail test() {
+		PermintaanModel permintaan = permintaanService.findById(2);
+		BillingDetail detail = new BillingDetail(permintaan.getIdPasien());
+		detail.setJumlahTagihan(permintaan.getJumlahMedicalSupplies());
+		LocalDate date = permintaan.getTanggal().toLocalDateTime().toLocalDate();
+		detail.setTanggalTagihan(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 
+		return detail;
+	}
 }

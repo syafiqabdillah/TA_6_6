@@ -1,6 +1,10 @@
 package com.apap.farmasi.controller;
 
 import java.io.IOException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import java.util.HashMap;
@@ -10,9 +14,13 @@ import java.util.Map;
 
 import com.apap.farmasi.model.*;
 import com.apap.farmasi.repository.StatusPermintaanDB;
+import com.apap.farmasi.rest.BillingDetail;
+import com.apap.farmasi.rest.BillingResponse;
+import com.apap.farmasi.rest.Settings;
 import com.apap.farmasi.service.MedicalSuppliesService;
 import com.apap.farmasi.service.StatusPermintaanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -110,8 +118,7 @@ public class PermintaanController {
 	}
 
 	@RequestMapping(value="/medical-supplies/permintaan/ubah",method = RequestMethod.POST)
-	public String permintaanUpdated(@ModelAttribute PermintaanModel permintaan,
-									Model model) throws IOException {
+	public String permintaanUpdated(@ModelAttribute PermintaanModel permintaan) {
 		PermintaanModel permintaanLama = permintaanService.findById(permintaan.getId());
 		permintaanLama.setStatusPermintaan(permintaan.getStatusPermintaan());
 		permintaanService.save(permintaanLama);
@@ -120,6 +127,15 @@ public class PermintaanController {
 			MedicalSuppliesModel obat = medicalSuppliesService.getMedicalSuppliesById(permintaanLama.getMedicalSupplies().getId());
 			obat.setJumlah(obat.getJumlah()-permintaanLama.getJumlahMedicalSupplies());
 			medicalSuppliesService.save(obat);
+
+			String path = Settings.billingUrl;
+			RestTemplate restTemplate = new RestTemplate();
+			BillingDetail detail = new BillingDetail(permintaanLama.getIdPasien());
+			detail.setJumlahTagihan(permintaanLama.getJumlahMedicalSupplies());
+			LocalDate date = permintaan.getTanggal().toLocalDateTime().toLocalDate();
+			detail.setTanggalTagihan(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+
+			restTemplate.postForObject(path,detail, BillingResponse.class);
 		}
 
 		return "redirect:/medical-supplies/permintaan/";
