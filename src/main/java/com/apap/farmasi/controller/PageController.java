@@ -1,5 +1,6 @@
 package com.apap.farmasi.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -9,10 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.client.RestTemplate;
+import com.apap.farmasi.model.DetailMedicalSuppliesLabModel;
 import com.apap.farmasi.model.MedicalSuppliesModel;
 import com.apap.farmasi.model.PerencanaanModel;
 import com.apap.farmasi.service.MedicalSuppliesService;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class PageController {
@@ -20,7 +25,7 @@ public class PageController {
 	MedicalSuppliesService medsupService;
 	
 	@RequestMapping(value ="/", method = RequestMethod.GET)
-	public String home(Model model) {
+	public String home(Model model) throws IOException {
 		List<MedicalSuppliesModel> listMedicalSupplies = new ArrayList<>();
 		PerencanaanModel perencanaan = new PerencanaanModel();
 		java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
@@ -43,7 +48,8 @@ public class PageController {
 				}
 			}
 		}
-		
+		List<DetailMedicalSuppliesLabModel> medsupLab = getDataFromLab();
+		model.addAttribute("medsupLab", medsupLab);
 		model.addAttribute("perencanaan", perencanaan);
 		model.addAttribute("listMedicalSupplies", listMedicalSupplies);
 		return "home";
@@ -54,6 +60,30 @@ public class PageController {
 		int minggu = calendar.get(Calendar.WEEK_OF_MONTH);
 		System.out.println("ini minggu ke-" + minggu);
 		return (minggu==1) || (minggu==3);
+	}
+	
+	List<DetailMedicalSuppliesLabModel> getDataFromLab() throws IOException{
+		//rest template 
+		RestTemplate restTemplate = new RestTemplate();
+		//membuat Object mapper 
+    	ObjectMapper mapper = new ObjectMapper();
+    	//path
+    	String path = "https://44d5b7c7-1ad6-43ca-8645-2673bcad019b.mock.pstmn.io/lab/kebutuhan/perencanaan";
+    	//json  
+    	String jsonLab = restTemplate.getForObject(path, String.class);
+    	JsonNode jsonNodeLab = mapper.readTree(jsonLab);
+    	//mengambil list result
+    	String result = jsonNodeLab.get("result").toString();
+    	System.out.println("result = " + result);
+    	//merubah string of map of Json menjad map of MedsupLab
+    	List<DetailMedicalSuppliesLabModel> medsup = mapper.readValue(result, new TypeReference<ArrayList<DetailMedicalSuppliesLabModel>>(){});
+    	//list
+
+    	//test 
+    	for (DetailMedicalSuppliesLabModel med : medsup) {
+    		System.out.println(med.getNama() + "-" + med.getJumlah());
+    	}
+		return medsup;
 	}
 	
 	@RequestMapping("/login")

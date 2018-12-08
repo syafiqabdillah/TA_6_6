@@ -68,23 +68,6 @@ public class PerencanaanController {
 		return "view-perencanaan-pembelian-medical-supplies";
 	}
 	
-	private <List>MedicalSuppliesModel getDataFromLab() throws IOException{
-		//rest template 
-		RestTemplate restTemplate = new RestTemplate();
-		//membuat Object mapper 
-    	ObjectMapper mapper = new ObjectMapper();
-    	//path
-    	String path = "https://44d5b7c7-1ad6-43ca-8645-2673bcad019b.mock.pstmn.io/lab/kebutuhan/perencanaan";
-    	//json map 
-    	String jsonLab = restTemplate.getForObject(path, String.class);
-    	JsonNode jsonNodeLab = mapper.readTree(jsonLab);
-    	//mengambil result , yakni map
-    	String resultMap = jsonNodeLab.get("result").toString();
-    	System.out.println("result map : " + resultMap);
-    	//merubah string of map of Json menjad map of MedsupLab
-    	Map<String, StaffModel> mapStaff = mapper.readValue(resultMap, new TypeReference<HashMap<String, StaffModel>>(){});
-    	
-		return null;
-	}
+	
 	
 }
