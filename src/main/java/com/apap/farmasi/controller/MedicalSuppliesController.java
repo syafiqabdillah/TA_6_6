@@ -19,6 +19,8 @@ import com.apap.farmasi.rest.ObatDetail;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+import javax.persistence.criteria.CriteriaBuilder;
+
 @Controller
 public class MedicalSuppliesController {
 	@Autowired
@@ -76,25 +78,35 @@ public class MedicalSuppliesController {
 		medicalSuppliesService.updateMedicalSupplies(medicalSupplies, medicalSupplies.getId());
 		return "updated-medical-supplies";
 	}
-	
-	@RequestMapping(value = "/medical-supplies/{id}/{jumlah}")
+
+	@RequestMapping(value = "/medical-supplies/checkout/{id}", method = RequestMethod.GET)
+	private String giveSupplies(@PathVariable(value="id") long id,
+								Model model) {
+		MedicalSuppliesModel obat = medicalSuppliesService.getMedicalSuppliesById(id);
+		model.addAttribute("obat", obat);
+		model.addAttribute("obatCheckOut", obat);
+
+		return "give-medical-supplies";
+	}
+
+	@RequestMapping(value = "/medical-supplies/checkout/{id}", method = RequestMethod.POST)
 	private String checkOutSupplies(@PathVariable(value="id") long id,
-									@PathVariable(value="jumlah") int jumlah, Model model) {
+									@ModelAttribute MedicalSuppliesModel obatCheckOut, Model model) {
 		//String path = "";
 		MedicalSuppliesModel obat = medicalSuppliesService.getMedicalSuppliesById(id);
 		ObatDetail obatDetail = new ObatDetail();
 		obatDetail.setNama(obat.getNama());
 		obatDetail.setId(obat.getId());
-		obatDetail.setJumlah(jumlah);
+		obatDetail.setJumlah(obatCheckOut.getJumlah());
 
 		//ObatDetail result = restTemplate.postForObject(path,obatDetail,ObatDetail.class);
 
-		obat.setJumlah(obat.getJumlah()-jumlah);
+		obat.setJumlah(obat.getJumlah()-obatCheckOut.getJumlah());
 		medicalSuppliesService.save(obat);
 		
 		//update halaman view all med sup
 		List<MedicalSuppliesModel> listOfMedicalSupplies = medicalSuppliesService.getAll();
-		model.addAttribute("listOfMedicalSupplies",listOfMedicalSupplies);
-		return "view-all-medical-supplies";
+		model.addAttribute("listOfMedicalSupplies",listOfMedicalSupplies);	
+		return "redirect:/medical-supplies/";
 	}
 }

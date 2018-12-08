@@ -1,11 +1,18 @@
 package com.apap.farmasi.controller;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+
+import com.apap.farmasi.model.PasienModel;
+import com.apap.farmasi.model.PermintaanModel;
+import com.apap.farmasi.rest.TambahPermintaanDetail;
+import com.apap.farmasi.service.JadwalJagaService;
+import com.apap.farmasi.service.PermintaanService;
+import com.apap.farmasi.service.StatusPermintaanService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.apap.farmasi.model.MedicalSuppliesModel;
 import com.apap.farmasi.service.MedicalSuppliesService;
 
@@ -14,11 +21,40 @@ import com.apap.farmasi.service.MedicalSuppliesService;
 public class ApiController {
 	@Autowired
 	MedicalSuppliesService medicalSuppliesService;
+
+	@Autowired
+	StatusPermintaanService statusPermintaanService;
+
+	@Autowired
+	JadwalJagaService jadwalJagaService;
+
+	@Autowired
+	PermintaanService permintaanService;
 	
 	@GetMapping(value="/daftar-medical-service")
 	public @ResponseBody List<MedicalSuppliesModel> getAllMedicalSupplies(){
 		List<MedicalSuppliesModel> listOfMedSupplies = medicalSuppliesService.getAll();
 		return listOfMedSupplies;
 	}
+
+	@PostMapping(value="/medical-supplies/permintaan/")
+	public List<PermintaanModel> createPermintaan(@RequestBody TambahPermintaanDetail permintaanDetail) {
+		List<PermintaanModel> result = new ArrayList<PermintaanModel>();
+		for (TambahPermintaanDetail.DetailRequest obat : permintaanDetail.getDetails()) {
+			PermintaanModel permintaan = new PermintaanModel();
+			permintaan.setIdPasien(permintaanDetail.getIdPasien());
+			permintaan.setMedicalSupplies(medicalSuppliesService.getMedicalSuppliesById(obat.getId()));
+			permintaan.setTanggal(Timestamp.valueOf(LocalDateTime.now()));
+			permintaan.setJumlahMedicalSupplies(obat.getJumlah());
+			permintaan.setStatusPermintaan(statusPermintaanService.findById('1'));
+			//set default
+			permintaan.setJadwalPermintaan(jadwalJagaService.getJadwalJagaById(Long.parseLong("1")));
+
+			permintaanService.save(permintaan);
+			result.add(permintaan);
+		}
+		return result;
+	}
+
 
 }

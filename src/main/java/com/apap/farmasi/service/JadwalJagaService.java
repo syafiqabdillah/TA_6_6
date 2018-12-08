@@ -7,7 +7,7 @@ import com.apap.farmasi.model.JadwalJagaModel;
 
 public interface JadwalJagaService {
 	//View
-	Optional<JadwalJagaModel> getJadwalJagaById(Long id);
+	JadwalJagaModel getJadwalJagaById(Long id);
 	List<JadwalJagaModel> getAll();
 	
 	//Add

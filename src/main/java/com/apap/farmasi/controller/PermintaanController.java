@@ -8,20 +8,17 @@ import java.util.List;
 import java.util.Map;
 
 
+import com.apap.farmasi.model.*;
+import com.apap.farmasi.repository.StatusPermintaanDB;
+import com.apap.farmasi.service.MedicalSuppliesService;
+import com.apap.farmasi.service.StatusPermintaanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import com.apap.farmasi.model.DetailPermintaanModel;
-import com.apap.farmasi.model.PermintaanModel;
-import com.apap.farmasi.model.StaffModel;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import com.apap.farmasi.model.PasienModel;
 import com.apap.farmasi.service.PermintaanService;
 import com.apap.farmasi.service.StaffService;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -35,7 +32,12 @@ public class PermintaanController {
 	
 	@Autowired 
 	StaffService staffService;
-	
+
+	@Autowired
+	StatusPermintaanService statusPermintaanService;
+
+	@Autowired
+	MedicalSuppliesService medicalSuppliesService;
 
 	@RequestMapping(value="/medical-supplies/permintaan/", method = RequestMethod.GET)
     public String viewAllPermintaan(Model model) throws IOException {
@@ -96,4 +98,31 @@ public class PermintaanController {
 		
     	return "view-all-permintaan";
     }
+
+	@RequestMapping(value="/medical-supplies/permintaan/ubah/{idPermintaan}", method = RequestMethod.GET)
+	public String updatePermintaan(@PathVariable(value="idPermintaan") long id, Model model) {
+		PermintaanModel permintaan = permintaanService.findById(id);
+
+		model.addAttribute("permintaan", permintaan);
+		model.addAttribute("statusPermintaan", statusPermintaanService.findAll());
+
+		return "update-permintaan";
+	}
+
+	@RequestMapping(value="/medical-supplies/permintaan/ubah",method = RequestMethod.POST)
+	public String permintaanUpdated(@ModelAttribute PermintaanModel permintaan,
+									Model model) throws IOException {
+		PermintaanModel permintaanLama = permintaanService.findById(permintaan.getId());
+		permintaanLama.setStatusPermintaan(permintaan.getStatusPermintaan());
+		permintaanService.save(permintaanLama);
+
+		if (permintaanLama.getStatusPermintaan().getNama().equals("diterima")) {
+			MedicalSuppliesModel obat = medicalSuppliesService.getMedicalSuppliesById(permintaanLama.getMedicalSupplies().getId());
+			obat.setJumlah(obat.getJumlah()-permintaanLama.getJumlahMedicalSupplies());
+			medicalSuppliesService.save(obat);
+		}
+
+		return "redirect:/medical-supplies/permintaan/";
+	}
+
 }

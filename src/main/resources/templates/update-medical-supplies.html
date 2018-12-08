@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlsn:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Ubah Medical Supplies</title>	
+	<title>Ubah Medical Supplies</title>
 	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
 	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
@@ -12,34 +12,33 @@
 	<div class="row">
 		<div class ="col-md-6" >
 			<div class="card" >
-				<div class = "card-header" >Ubah Medical Supplies</div>
 				<div class="card-body">
 					<form th:action="@{/medical-supplies/ubah}" th:object = ${medicalSupplies} method = "POST">
 						<input  type="hidden" th:field="*{id}"></input>
 						<input  type="hidden" th:field="*{jumlah}"></input>
-						
-						
+
+
 						<div class="form-group">
 							<label class="control-label col-sm-4">Nama:</label>
 							<div class="col-sm-10">
 						    	<input type="text" class="form-control" name="nama" th:value = "${medicalSupplies.nama}" th:required = "true">
 						    </div>
 						</div>
-						
+
 						<div class="form-group">
 							<label class="control-label col-sm-4">Price:</label>
 							<div class="col-sm-10">
 						    	<input type="text" class="form-control" name="price" th:value = "${medicalSupplies.price}" th:required = "true">
 						    </div>
 						</div>
-						
+
 						<div class="form-group">
 							<label class="control-label col-sm-4">Deskripsi:</label>
 							<div class="col-sm-10">
 						    	<input type="text" class="form-control" name="deskripsi" th:value = "${medicalSupplies.deskripsi}" th:required = "true">
 						    </div>
 						</div>
-						
+
 						<div class="form-group">
 							<label class="control-label col-sm-4">Jenis Medical Supplies:</label>
 							<div class="col-sm-10">
@@ -51,9 +50,9 @@
 						</div>
 						<button type="submit" class="btn btn-primary" method = "POST">Simpan</button>
 					</div>
-				</form>	
+				</form>
 			</div>
 		</div>
-	</div>		
+	</div>
 </body>
 </html>

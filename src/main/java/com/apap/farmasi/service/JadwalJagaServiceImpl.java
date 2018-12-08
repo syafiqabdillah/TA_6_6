@@ -17,9 +17,9 @@ public class JadwalJagaServiceImpl implements JadwalJagaService{
 	JadwalJagaDB jadwalJagaDb;
 	
 	@Override
-	public Optional<JadwalJagaModel> getJadwalJagaById(Long id) {
+	public JadwalJagaModel getJadwalJagaById(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return jadwalJagaDb.findById(id).get();
 	}
 
 	@Override
