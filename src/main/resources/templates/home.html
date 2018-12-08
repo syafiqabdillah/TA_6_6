@@ -125,7 +125,8 @@
 										    <div class="col-sm-10">
 												<div >
 													<select  class="form-control" required="required" name="medicalSupplies">
-												      <option th:each="medsup : ${listMedicalSupplies}" th:value="${medsup.id}" th:text="${medsup.nama}"></option>
+														<option disabled="disabled" selected="selected">--Pilih Medical Supplies--</option>
+												    	<option th:each="medsup : ${listMedicalSupplies}" th:value="${medsup.id}" th:text="${medsup.nama}"></option>
 												    </select>
 												</div>
 										    </div>	    
@@ -134,7 +135,7 @@
 										<div class="form-group row">
 										   <label for="tanggal" class="col-sm-2 col-form-label">Tanggal</label>
 										   <div class="col-sm-10">
-										     <input type="date" class="form-control" name="tanggal" th:value="${perencanaan.tanggal}"disabled>
+										     <input type="date" class="form-control" name="tanggal" th:value="${perencanaan.tanggal}" readonly>
 										   </div>
 										</div>
 										
