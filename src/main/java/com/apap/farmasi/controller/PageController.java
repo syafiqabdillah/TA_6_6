@@ -1,5 +1,6 @@
 package com.apap.farmasi.controller;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ public class PageController {
 	public String home(Model model) {
 		List<MedicalSuppliesModel> listMedicalSupplies = medsupService.getAll();
 		PerencanaanModel perencanaan = new PerencanaanModel();
+		java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+		perencanaan.setTanggal(date);
 		model.addAttribute("perencanaan", perencanaan);
 		model.addAttribute("listMedicalSupplies", listMedicalSupplies);
 		return "home";
