@@ -111,9 +111,9 @@
 				    </div>
 				  </div>
 				</div><br>
-				<div class="container-fluid bg-6 text-center">
+				<div class="container-fluid bg-4 text-center">
 					<div class="row">
-						<div class="col-sm-6">
+						<div class="col-sm-4">
 					     	<div class="card">
 								<div class="card-header bg-info" style="color:white">
 								    Tambah Perencanaan
@@ -121,11 +121,11 @@
 								<div class="card-body">
 								  	<form th:action="@{/medical-supplies/perencanaan/tambah}" method="POST" th:object="${perencanaan}">
 								  		<div class="form-group row">
-										    <label for="id_medical_supplies" class="col-sm-2 col-form-label">Medical Supplies</label>
-										    <div class="col-sm-10">
-												<div >
+										    <label for="id_medical_supplies" class="col-sm-4 col-form-label">Medical Supplies</label>
+										    <div class="col-sm-6">
+												<div>
 													<select  class="form-control" required="required" name="medicalSupplies">
-														<option disabled="disabled" selected="selected">--Pilih Medical Supplies--</option>
+														<option disabled="disabled" selected="selected">Medical Supplies</option>
 												    	<option th:each="medsup : ${listMedicalSupplies}" th:value="${medsup.id}" th:text="${medsup.nama}"></option>
 												    </select>
 												</div>
@@ -133,8 +133,8 @@
 										</div>
 										
 										<div class="form-group row">
-										   <label for="tanggal" class="col-sm-2 col-form-label">Tanggal</label>
-										   <div class="col-sm-10">
+										   <label for="tanggal" class="col-sm-4 col-form-label">Tanggal</label>
+										   <div class="col-sm-6">
 										     <input type="date" class="form-control" name="tanggal" th:value="${perencanaan.tanggal}" readonly>
 										   </div>
 										</div>
@@ -144,8 +144,8 @@
 										<input type="hidden" class="form-control" name="nama" value="sebuah perencanaan">
 												
 										<div class="form-group row">
-										   <label for="jumlah" class="col-sm-2 col-form-label">Jumlah</label>
-										   <div class="col-sm-10">
+										   <label for="jumlah" class="col-sm-4 col-form-label">Jumlah</label>
+										   <div class="col-sm-6">
 										     <input type="number" class="form-control" name="jumlah">
 										   </div>
 										</div>
@@ -155,7 +155,7 @@
 								</div>
 							</div>
 					    </div>
-					    <div class="col-sm-6">
+					    <div class="col-sm-4">
 					     	<div class="card">
 								<div class="card-header bg-info" style="color:white">
 								    Tambah User
@@ -164,20 +164,43 @@
 								  	<form th:action="@{/user/addUser}" method="post">
 								  		<div class="row form-group">
 								  			<label class="col-sm-4"> User Name</label>
-								  			<input class="col-sm-8 form-control input-sm" type="text" name="username"/>
+								  			<input class="col-sm-6 form-control input-sm" type="text" name="username"/>
 								  		</div>
 								  		<div class="row form-group">
 								  			<label class="col-sm-4"> Password </label>
-								  			<input class="col-sm-8 form-control input-sm" type="password" name="password"/>
+								  			<input class="col-sm-6 form-control input-sm" type="password" name="password"/>
 								  		</div>
 								  		<div class="row form-group">
 								  			<label class="col-sm-4"> Role </label>
-								  			<input class="col-sm-8 form-control input-sm" type="text" name="role"/>
+								  			<input class="col-sm-6 form-control input-sm" type="text" name="role"/>
 								  		</div>
 								  		<div>
 								  			<button type="submit" class="btn btn-primary">Simpan</button>
 								  		</div>
 								  	</form>
+								</div>
+							</div>
+					    </div>
+					    <div class="col-sm-4">
+					     	<div class="card">
+								<div class="card-header bg-info" style="color:white">
+								    Data Medical Supplies Lab
+								</div>
+								<div class="card-body">
+								  	<table class="table table-striped">
+									    <thead>
+									      <tr>
+									        <th>Medical Supplies</th>
+									        <th>Jumlah</th>
+									      </tr>
+									    </thead>
+									    <tbody>
+									    <tr th:each="medsup : ${listMedicalSupplies}">
+									    	<td th:text="${medsup.nama}"></td>
+									    	<td th:text="${medsup.jumlah}"></td>
+									    </tr>
+									    </tbody>
+									</table>
 								</div>
 							</div>
 					    </div>
