@@ -72,14 +72,4 @@ public class ApiController {
 			return permintaanService.save(permintaan);
 	}
 
-	@GetMapping(value="/test")
-	public BillingDetail test() {
-		PermintaanModel permintaan = permintaanService.findById(2);
-		BillingDetail detail = new BillingDetail(permintaan.getIdPasien());
-		detail.setJumlahTagihan(permintaan.getJumlahMedicalSupplies());
-		LocalDate date = permintaan.getTanggal().toLocalDateTime().toLocalDate();
-		detail.setTanggalTagihan(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-
-		return detail;
-	}
 }
