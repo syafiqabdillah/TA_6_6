@@ -24,7 +24,8 @@
 		<hr>
 		<div class="row">
 			<div class="col-md-12">
-				<div style="margin: 10px 10px 10px 10px;" class="container-fluid bg-3 text-center">
+				<div style="margin: 10px 10px 10px 10px;"
+					class="container-fluid bg-3 text-center">
 					<h2 align="left">Medical Suplies</h2>
 					<div class="row">
 						<div class="col-sm-3">
@@ -50,7 +51,8 @@
 					</div>
 				</div>
 				<hr>
-				<div style="margin: 10px 10px 10px 10px;" class="container-fluid bg-3 text-center">
+				<div style="margin: 10px 10px 10px 10px;"
+					class="container-fluid bg-3 text-center">
 					<h2 align="left">Permintaan & Perencaan Medical Supplies</h2>
 					<div class="row">
 						<div class="col-sm-3">
@@ -85,7 +87,9 @@
 					</div>
 				</div>
 				<hr>
-				<div style="margin: 10px 10px 10px 10px;" class="container-fluid bg-3 text-center" th:if="${authority == 'ADMIN_FARMASI'}">
+				<div style="margin: 10px 10px 10px 10px;"
+					class="container-fluid bg-3 text-center"
+					th:if="${authority == 'ADMIN_FARMASI'}">
 					<h2 align="left">Jadwal Jaga</h2>
 					<div class="row">
 						<div class="col-sm-3">
@@ -121,7 +125,8 @@
 					</div>
 				</div>
 				<hr>
-				<div style="margin: 10px 10px 10px 10px;" class="container-fluid bg-4 text-center">
+				<div style="margin: 10px 10px 10px 10px;"
+					class="container-fluid bg-4 text-center">
 					<div class="row">
 						<div class="col-sm-4" th:if="${authority == 'STAF_APOTEKER'}">
 							<div class="card">
@@ -167,34 +172,6 @@
 
 										<button type="submit" class="btn btn-primary">Tambah
 											Perencanaan</button>
-									</form>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="card">
-								<div class="card-header bg-info" style="color: white">
-									Tambah User</div>
-								<div class="card-body">
-									<form th:action="@{/user/addUser}" method="post">
-										<div class="row form-group">
-											<label class="col-sm-4"> User Name</label> <input
-												class="col-sm-6 form-control input-sm" type="text"
-												name="username" />
-										</div>
-										<div class="row form-group">
-											<label class="col-sm-4"> Password </label> <input
-												class="col-sm-6 form-control input-sm" type="password"
-												name="password" />
-										</div>
-										<div class="row form-group">
-											<label class="col-sm-4"> Role </label> <input
-												class="col-sm-6 form-control input-sm" type="text"
-												name="role" />
-										</div>
-										<div>
-											<button type="submit" class="btn btn-primary">Simpan</button>
-										</div>
 									</form>
 								</div>
 							</div>

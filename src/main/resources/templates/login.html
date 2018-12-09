@@ -2,53 +2,115 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Home</title>
+<title>Home</title>
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+.rata-tengah {
+	text-align: center;
+	margin: 20px;
+}
 
-    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
-    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
-    
-    <style>
-    	.rata-tengah{
-    		text-align : center;
-    		margin: 20px;
-    	}
-    	
-    	.judul{
-    		text-transform:uppercase;
-    		margin-bottom : 50px;
-    		margin-top : 50px;
-    	}
-    </style>
+.judul {
+	text-transform: uppercase;
+	margin-bottom: 50px;
+	margin-top: 50px;
+}
+</style>
 
 </head>
 
 <body class="bg-light">
-<div class="container">
-	<div class="row">
-	    <div class="col-md-6 offset-md-3">
-	    	<div class="rata-tengah">
-	    		<div class="judul">
-	    			<h1>Halaman Login</h1>
-	    			<p class="text-info">Selamat Datang di <strong>SI Farmasi</strong></p>
-	    		</div>
-				<div th:if="${param.error}">
-				    <span style="color: red">Invalid username or password</span>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<div class="rata-tengah">
+					<div class="judul">
+						<h1>Halaman Login</h1>
+						<p class="text-info">
+							Selamat Datang di <strong>SI Farmasi</strong>
+						</p>
+					</div>
+					<div th:if="${param.error}">
+						<span style="color: red">Invalid username or password</span>
+					</div>
+					<form th:action="@{/login}" method="POST">
+						<div class="row form-group">
+							<label class="col-sm-4">Username</label> <input type="text"
+								class="col-sm-6 form-control input-sm" name="username">
+						</div>
+						<div class="row form-group">
+							<label class="col-sm-4">Password</label> <input type="password"
+								class="col-sm-6 form-control input-sm" name="password">
+						</div>
+						<button type="submit" class="btn btn-primary">Log In</button>
+					</form>
 				</div>
-				<form th:action="@{/login}" method="POST">
-				    <div class="row form-group">
-				        <label class="col-sm-4">Username</label>
-				        <input type="text" class="col-sm-6 form-control input-sm" name="username">
-				    </div>
-				    <div class="row form-group">
-				        <label class="col-sm-4">Password</label>
-				        <input type="password" class="col-sm-6 form-control input-sm" name="password">
-				    </div>
-				    <button type="submit" class="btn btn-primary">Log In</button>
-				</form>
+			</div>
+		</div>
+		<br>
+		<div class="row" align="center">
+			<div class="col"></div>
+			<div class="col-5">
+				<p class="text-info" style="margin-top: 7px;">Belum punya akun?</p>
+				<button type="button" class="btn btn-link" data-toggle="modal"
+					data-target="#myModal">Daftar</button>
+			</div>
+			<div class="col"></div>
+		</div>
+
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Daftar Akun SI Farmasi</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<form th:action="@{/user/addUser}" method="post">
+							<div class="row form-group">
+								<label class="col-sm-4"> User Name</label> <input
+									class="col-sm-6 form-control input-sm" type="text"
+									name="username" pattern=".{8,}" title="Must contain at least 8 or more characters" required />
+							</div>
+							<div class="row form-group">
+								<label class="col-sm-4"> Password </label> <input
+									class="col-sm-6 form-control input-sm" type="password"
+									name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+									title="Must contain at least one number, uppercase, and lowercase, and at least 8 or more characters"
+									required />
+							</div>
+							<div class="row form-group">
+								<label class="col-sm-4"> Role </label> <select
+									class="col-sm-6 form-control" name="role" required>
+									<option th:value="STAF_APOTEKER">STAF APOTEKER</option>
+									<option th:value="ADMIN_FARMASI">ADMIN FARMASI</option>
+									<option th:value="UMUM">UMUM</option>
+								</select>
+							</div>
+							<br>
+							<br>
+							<div>
+								<button type="submit" class="btn btn-success">Simpan</button>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</div>
-</div>
 </body>
 
 </html>
