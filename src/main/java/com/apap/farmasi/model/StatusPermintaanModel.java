@@ -18,7 +18,7 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="status_permintaan")
+@Table(name="status_permintaan", schema="farmasi")
 public class StatusPermintaanModel implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

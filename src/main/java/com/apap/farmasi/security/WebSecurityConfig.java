@@ -32,6 +32,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/medical-supplies/jadwal-staf/**").hasAnyAuthority("ADMIN_FARMASI")
 			.antMatchers("/rawat-jalan/obat/tambah").hasAnyAuthority("ADMIN_FARMASI","STAF_APOTEKER")
 			.antMatchers("/medical-supplies/updateStatus").hasAnyAuthority("ADMIN_FARMASI")
+			.antMatchers("/api/**").permitAll()
+			.antMatchers("/user/**").permitAll()
 			.anyRequest().authenticated()
 			.and()
 			.formLogin()

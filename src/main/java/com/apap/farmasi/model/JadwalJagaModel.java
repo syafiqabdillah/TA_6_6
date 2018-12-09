@@ -24,7 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "jadwal_jaga")
+@Table(name = "jadwal_jaga", schema="farmasi")
 public class JadwalJagaModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

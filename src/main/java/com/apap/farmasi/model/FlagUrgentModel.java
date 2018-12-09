@@ -18,7 +18,7 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="flag_urgent")
+@Table(name="flag_urgent", schema="farmasi")
 public class FlagUrgentModel implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
