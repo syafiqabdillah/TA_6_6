@@ -9,14 +9,24 @@
 
 <body>
 	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<br>
+	<div align="center">
+		<img
+			src="https://i.pinimg.com/originals/7e/88/cc/7e88cce2beec5f097aa60245d9d70fc0.png"
+			height="100px" width="100px" />
+	</div>
+	
+	<h2 id="box" style="text-align:center;">Update Detail Medical Supplies</h2>
+	<br>
 	<div class="row">
+		<div class="col-md-3"></div>
 		<div class ="col-md-6" >
 			<div class="card" >
 				<div class="card-body">
 					<form th:action="@{/medical-supplies/ubah}" th:object = ${medicalSupplies} method = "POST">
+					
 						<input  type="hidden" th:field="*{id}"></input>
 						<input  type="hidden" th:field="*{jumlah}"></input>
-
 
 						<div class="form-group">
 							<label class="control-label col-sm-4">Nama:</label>
@@ -42,17 +52,17 @@
 						<div class="form-group">
 							<label class="control-label col-sm-4">Jenis Medical Supplies:</label>
 							<div class="col-sm-10">
-						    	<select class="form-control" required="required" name="jenisMedicalSupplies">
-									<option disabled="disabled" selected="selected" >-- JenisMedicalSupplies --</option>
+						    	<select class="form-control" required="required" name="jenisMedicalSupplies" th:value="${medicalSupplies.jenisMedicalSupplies.id}" >
+									<option disabled="disabled" selected="selected" th:text = "${medicalSupplies.jenisMedicalSupplies.jenisMedicalSupplies}" th:value="${medicalSupplies.jenisMedicalSupplies.id}"></option>
 									<option th:each="jenisMedicalSupplies : ${jenisMedicalSupplies}" th:value="${jenisMedicalSupplies.id}" th:text="${jenisMedicalSupplies.jenisMedicalSupplies}"></option>
 								</select>
 						    </div>
 						</div>
-						<button type="submit" class="btn btn-primary" method = "POST">Simpan</button>
-					</div>
+						<div align="center"><button type="submit" class="btn btn-primary" method = "POST">Simpan</button></div>
 				</form>
 			</div>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

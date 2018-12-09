@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +25,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class PageController {
 	@Autowired
 	MedicalSuppliesService medsupService;
-	
+
 	@RequestMapping(value ="/", method = RequestMethod.GET)
 	public String home(Model model) throws IOException {
 		List<MedicalSuppliesModel> listMedicalSupplies = new ArrayList<>();
@@ -48,19 +50,31 @@ public class PageController {
 				}
 			}
 		}
+
 		List<DetailMedicalSuppliesLabModel> medsupLab = getDataFromLab();
 		model.addAttribute("medsupLab", medsupLab);
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String authority = authentication.getAuthorities().iterator().next().getAuthority();
+		model.addAttribute("mingguKe", mingguKe());
+		model.addAttribute("authority", authority);
 		model.addAttribute("perencanaan", perencanaan);
 		model.addAttribute("listMedicalSupplies", listMedicalSupplies);
 		return "home";
 	}
 	
+	int mingguKe() {
+		Calendar calendar = Calendar.getInstance();
+		return calendar.get(Calendar.WEEK_OF_MONTH);
+	}
+
 	boolean minggu1Atau3() {
 		Calendar calendar = Calendar.getInstance();
 		int minggu = calendar.get(Calendar.WEEK_OF_MONTH);
 		System.out.println("ini minggu ke-" + minggu);
 		return (minggu==1) || (minggu==3);
 	}
+
 	
 	List<DetailMedicalSuppliesLabModel> getDataFromLab() throws IOException{
 		//rest template 

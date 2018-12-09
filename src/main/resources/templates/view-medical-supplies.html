@@ -25,11 +25,18 @@ p {
 
 <body>
 	<nav th:replace="fragments/fragment :: navbar(title= 'View Pilot')"></nav>
-	<h2 id="box">Detail Medical Supplies</h2>
+	<br>
+	<div align="center">
+		<img
+			src="https://i.pinimg.com/originals/7e/88/cc/7e88cce2beec5f097aa60245d9d70fc0.png"
+			height="100px" width="100px" />
+	</div>
+	<h2 id="box" style="text-align:center;">Detail Medical Supplies</h2>
 	<div class="container-fluid">
 
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
 				<div class="card">
 					<div class="card-header">
 					<h4  th:text="'Detail ' + ${medicalSupplies.nama}"></h4>
@@ -69,8 +76,8 @@ p {
 						</div>
 					</div>
 				</div>
-				<form th:action="@{/medical-supplies/ubah/} + ${medicalSupplies.id}" id="box">
-					<button type="submit">Update Medical Supplies</button>
+				<form th:action="@{/medical-supplies/ubah/} + ${medicalSupplies.id}" id="box" >
+					<div align="center" ><button class="btn btn-primary" type="submit" >Update Medical Supplies</button></div>
 				</form>
 			</div>
 		</div>

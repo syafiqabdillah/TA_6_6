@@ -19,41 +19,48 @@
                              height="100px" width="100px"/></div>
     <h2 style="text-align:center;">Update Status Permintaan </h2>
     <br>
-    <div class="card">
-        <div class="card-header">Update Status Permintaan</div>
-        <table width="80%">
-            <tr>
-                <th>Nama</th>
-                <td th:text="${permintaan.medicalSupplies.nama}"></td>
-            </tr>
-            <tr>
-                <th>Jumlah</th>
-                <td th:text="${permintaan.jumlahMedicalSupplies}"></td>
-            </tr>
-            <tr>
-                <th>Jenis</th>
-                <td th:text="${permintaan.medicalSupplies.jenisMedicalSupplies.jenisMedicalSupplies}"></td>
-            </tr>
-        </table>
-        <div class="card-body">
-            <form th:action="@{/medical-supplies/permintaan/ubah}" th:object=${permintaan} method="POST">
-                <input type="hidden" name="id" th:value="*{id}">
-                <input type="hidden" name="tanggal" th:value="*{tanggal}">
-                <input type="hidden" name="jumlahMedicalSupplies" th:value="*{jumlahMedicalSupplies}">
-                <input type="hidden" name="idPasien" th:value="*{idPasien}">
-                <input type="hidden" name="medicalSupplies" th:field="*{medicalSupplies}" th:value="${permintaan.medicalSupplies}">
-                <input type="hidden" name="jadwalPermintaan" th:field="*{jadwalPermintaan}" th:value="${permintaan.jadwalPermintaan}">
-                <div class="form-group">
-                    <label class="control-label col-sm-4">Status:</label>
-                    <select class="form-control" required="required" th:field="${permintaan.statusPermintaan}" name="statusPermintaan">
-                        <option th:each="status : ${statusPermintaan}" th:value="${status.id}"
-                                th:text="${status.nama}"></option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary" method="POST">Simpan</button>
-            </form>
-        </div>
+    <div class="row">
+    	<div class="col-sm-3"></div>
+    	<div class="col-sm-6">
+    		<div class="card">
+		        <div class="card-header">Update Status Permintaan</div>
+		        <table >
+		            <tr>
+		                <th>Nama</th>
+		                <td th:text="${permintaan.medicalSupplies.nama}"></td>
+		            </tr>
+		            <tr>
+		                <th>Jumlah</th>
+		                <td th:text="${permintaan.jumlahMedicalSupplies}"></td>
+		            </tr>
+		            <tr>
+		                <th>Jenis</th>
+		                <td th:text="${permintaan.medicalSupplies.jenisMedicalSupplies.jenisMedicalSupplies}"></td>
+		            </tr>
+		        </table>
+		        <div class="card-body">
+		            <form th:action="@{/medical-supplies/permintaan/ubah}" th:object=${permintaan} method="POST">
+		                <input type="hidden" name="id" th:value="*{id}">
+		                <input type="hidden" name="tanggal" th:value="*{tanggal}">
+		                <input type="hidden" name="jumlahMedicalSupplies" th:value="*{jumlahMedicalSupplies}">
+		                <input type="hidden" name="idPasien" th:value="*{idPasien}">
+		                <input type="hidden" name="medicalSupplies" th:field="*{medicalSupplies}" th:value="${permintaan.medicalSupplies}">
+		                <input type="hidden" name="jadwalPermintaan" th:field="*{jadwalPermintaan}" th:value="${permintaan.jadwalPermintaan}">
+		                <div class="form-group">
+		                    <label class="control-label col-sm-4">Status:</label>
+		                    <select class="form-control" required="required" th:field="${permintaan.statusPermintaan}" name="statusPermintaan">
+		                        <option th:each="status : ${statusPermintaan}" th:value="${status.id}"
+		                                th:text="${status.nama}"></option>
+		                    </select>
+		                </div>
+		                <button type="submit" class="btn btn-primary">Simpan</button>
+		            </form>
+		        </div>
+		    </div>
+    	</div>
     </div>
+    
+    
 </div>
 </body>
 

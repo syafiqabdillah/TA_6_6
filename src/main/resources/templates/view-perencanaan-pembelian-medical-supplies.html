@@ -37,7 +37,9 @@
 	    	<td> 
 		    	<form th:action="@{/medical-supplies/updateStatus}" method="GET">
 					<input type="hidden" name="id" class="form-control" th:value="${perencanaan.id}"/>
-					<button type="submit" class="btn btn-primary">Ubah Status</button>
+					<button type="submit" class="btn btn-primary" th:if="${perencanaan.status == 'Tersedia'}" disabled>Ubah Status</button>
+					<button type="submit" class="btn btn-primary" th:if="${perencanaan.status == 'Diproses'}">Ubah Status</button>
+					<button type="submit" class="btn btn-primary" th:if="${perencanaan.status == 'Diajukan'}">Ubah Status</button>
 				</form>
 	    	</td>
 	    </tr>

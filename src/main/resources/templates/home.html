@@ -2,172 +2,143 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>SI Farmasi</title>
+<title>SI Farmasi</title>
 
-    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
-    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 
 <body class="bg-light">
 	<nav th:replace="fragments/fragment :: navbar"></nav>
-	
-    <div class="container-fluid">
-    	<br>
-        <div align="center"><img src="https://i.pinimg.com/originals/7e/88/cc/7e88cce2beec5f097aa60245d9d70fc0.png" height="100px" width="100px"/></div>
-        <h2 style="text-align:center;" th:text=" 'Selamat Datang di SI Farmasi, ' + ${#httpServletRequest.remoteUser} + ' !'">Login as</h2>
-        <br>
-        <div class="row">
-        	<div class="col-md-12">
-				<div class="container-fluid bg-3 text-center">    
-				  <div class="row">
-				  	<div class="col-sm-3">
-				      	<div class="card">
-							<div class="card-header bg-info" style="color:white">
-								<img height="25px" width="25px" src="https://cdn0.iconfinder.com/data/icons/shipping-and-logistics-part-3/512/32-512.png"/>
-							    Tambah Jadwal Jaga
-							</div>
-							<div class="card-body">
-							  	<form th:action="@{/medical-supplies/jadwal-staf/tambah}" method="get">
-							  		<div>
-							  			<button type="submit" class="btn btn-primary">Tambah</button>
-							  		</div>
-							  	</form>
-							</div>
-						</div>
-				    </div>
-				    <div class="col-sm-3">
-				     	<div class="card">
-							<div class="card-header bg-info" style="color:white">
-							<img height="25px" width="25px" src="http://cdn.onlinewebfonts.com/svg/img_347949.png"/>
-							    Tambah Medical Supplies
-							</div>
-							<div class="card-body">
-							  	<form th:action="@{/medical-supplies/tambah/}" method="get">
-							  		<div>
-							  			<button type="submit" class="btn btn-primary">Tambah</button>
-							  		</div>
-							  	</form>
-							</div>
-						</div>
-				    </div>
-				    <div class="col-sm-3"> 
-			      		<div class="card">
-							<div class="card-header bg-info" style="color:white">
-							<img height="25px" width="25px" src="https://image.flaticon.com/icons/png/512/567/567014.png"/>
-							    Lihat Detail Perencanaan
-							</div>
-							<div class="card-body">
-							  	<form th:action="@{/medical-supplies/perencanaan/}" method="get">
-							  		<div>
-							  			<button type="submit" class="btn btn-primary">Lihat Perencanaan</button>
-							  		</div>
-							  	</form>
-							</div>
-						</div>    
-				    </div>
-				    <div class="col-sm-3">
-				      <div class="card">
-							<div class="card-header bg-info" style="color:white">
-							<img height="25px" width="25px" src="https://png.pngtree.com/svg/20160308/request_801865.png"/>
-							    Lihat Detail Permintaan
-							</div>
-							<div class="card-body">
-							  	<form th:action="@{/medical-supplies/permintaan/}" method="get">
-							  		<div>
-							  			<button type="submit" class="btn btn-primary">Lihat Permintaan</button>
-							  		</div>
-							  	</form>
-							</div>
-						</div>
-				    </div>
-				  </div>
-				</div><br>
-	
-				<div class="container-fluid bg-3 text-center">    
-				  <div class="row">
-				    <div class="col-sm-3">
-				     	<div class="card">
-							<div class="card-header bg-info" style="color:white">
-							<img height="25px" width="25px" src="https://cdn0.iconfinder.com/data/icons/shipping-and-logistics-part-3/512/32-512.png"/>
-							    Lihat Jadwal Jaga
-							</div>
-							<div class="card-body">
-							  	<form th:action="@{/medical-supplies/jadwal-staf/}" method="get">
-							  		<div>
-							  			<button type="submit" class="btn btn-primary">Lihat Jadwal Jaga</button>
-							  		</div>
-							  	</form>
-							</div>
-						</div>
-				    </div>
-				    <div class="col-sm-3"> 
-				      	<div class="card">
-							<div class="card-header bg-info" style="color:white">
-							<img height="25px" width="25px" src="http://cdn.onlinewebfonts.com/svg/img_347949.png"/>
-							    Lihat Medical Supplies
-							</div>
-							<div class="card-body">
-							  	<form th:action="@{/medical-supplies/}" method="get">
-							  		<div>
-							  			<button type="submit" class="btn btn-primary">Lihat Medical Supplies</button>
-							  		</div>
-							  	</form>
-							</div>
-						</div>
-				    </div>
-				  </div>
-				</div><br>
-				<div class="container-fluid bg-4 text-center">
+	<div class="container-fluid">
+		<br>
+		<div align="center">
+			<img
+				src="https://i.pinimg.com/originals/7e/88/cc/7e88cce2beec5f097aa60245d9d70fc0.png"
+				height="100px" width="100px" />
+		</div>
+		<h2 style="text-align: center;"
+			th:text=" 'Selamat Datang di SI Farmasi, ' + ${#httpServletRequest.remoteUser} + ' !'">Login
+			as</h2>
+		<hr>
+		<div class="row">
+			<div class="col-md-12">
+				<div style="margin: 10px 10px 10px 10px;" class="container-fluid bg-3 text-center">
+					<h2 style="text-align:center;">Medical Suplies</h2>
 					<div class="row">
-						<div class="col-sm-4">
-					     	<div class="card">
-								<div class="card-header bg-info" style="color:white">
-								<img height="25px" width="25px" src="https://image.flaticon.com/icons/png/512/567/567014.png"/>
-								    Tambah Perencanaan
-								</div>
+						<div class="col-sm-3"></div>
+						
+						<div class="col-sm-3">
+							<div class="card">
+								<div class="card-header bg-info" style="color: white">
+								<img height="25px" width="25px" src="http://cdn.onlinewebfonts.com/svg/img_347949.png"/>
+									Lihat Semua Medical Supplies</div>
 								<div class="card-body">
-								  	<form th:action="@{/medical-supplies/perencanaan/tambah}" method="POST" th:object="${perencanaan}">
-								  		<div class="form-group row">
-										    <label for="id_medical_supplies" class="col-sm-4 col-form-label">Medical Supplies</label>
-										    <div class="col-sm-6">
-												<div>
-													<select  class="form-control" required="required" name="medicalSupplies">
-														<option disabled="disabled" selected="selected">Medical Supplies</option>
-												    	<option th:each="medsup : ${listMedicalSupplies}" th:value="${medsup.id}" th:text="${medsup.nama}"></option>
-												    </select>
-												</div>
-										    </div>	    
+									<a class="btn btn-primary" th:href="@{/medical-supplies/}">Lihat
+										Medical Supplies</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-sm-3" th:if="${authority == 'ADMIN_FARMASI'}">
+							<div class="card">
+								<div class="card-header bg-info" style="color: white">
+								<img height="25px" width="25px" src="http://cdn.onlinewebfonts.com/svg/img_347949.png"/>
+									Tambah Medical Supplies</div>
+								<div class="card-body">
+									<a class="btn btn-primary"
+										th:href="@{/medical-supplies/tambah/}">Tambah</a>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<hr>
+				<div style="margin: 10px 10px 10px 10px;" class="container-fluid bg-3 text-center">
+					<h2 style="text-align:center;">Permintaan & Perencanaan Medical Supplies</h2>
+					<div class="row">
+						<div class="col-sm-3"></div>
+						<div class="col-sm-3">
+							<div class="card">
+								<div class="card-header bg-info" style="color: white">
+								<img height="25px" width="25px" src="https://png.pngtree.com/svg/20160308/request_801865.png"/>
+									Lihat Detail Permintaan</div>
+								<div class="card-body">
+									<form th:action="@{/medical-supplies/permintaan/}" method="get">
+										<div>
+											<button type="submit" class="btn btn-primary">Lihat
+												Permintaan</button>
 										</div>
-										
-										<div class="form-group row">
-										   <label for="tanggal" class="col-sm-4 col-form-label">Tanggal</label>
-										   <div class="col-sm-6">
-										     <input type="date" class="form-control" name="tanggal" th:value="${perencanaan.tanggal}" readonly>
-										   </div>
-										</div>
-										
-										<input type="hidden" class="form-control" name="status" th:value="Diajukan">
-								
-										<input type="hidden" class="form-control" name="nama" value="sebuah perencanaan">
-												
-										<div class="form-group row">
-										   <label for="jumlah" class="col-sm-4 col-form-label">Jumlah</label>
-										   <div class="col-sm-6">
-										     <input type="number" class="form-control" name="jumlah">
-										   </div>
-										</div>
-										
-										<button type="submit" class="btn btn-primary">Tambah</button>
 									</form>
 								</div>
 							</div>
-					    </div>
-					    <div class="col-sm-4">
+						</div>
+						<div class="col-sm-3">
+							<div class="card">
+								<div class="card-header bg-info" style="color: white">
+								<img height="25px" width="25px" src="https://image.flaticon.com/icons/png/512/567/567014.png"/>
+									Lihat Detail Perencanaan</div>
+								<div class="card-body">
+									<form th:action="@{/medical-supplies/perencanaan/}"
+										method="get">
+										<div>
+											<button type="submit" class="btn btn-primary">Lihat Perencanaan</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div style="margin: 10px 10px 10px 10px;" class="container-fluid bg-3 text-center" th:if="${authority == 'ADMIN_FARMASI'}">
+					<h2 style="text-align:center;">Jadwal Jaga</h2>
+					<div class="row">
+						<div class="col-sm-3"></div>
+						<div class="col-sm-3">
+							<div class="card">
+								<div class="card-header bg-info" style="color: white">
+								<img height="25px" width="25px" src="https://cdn0.iconfinder.com/data/icons/shipping-and-logistics-part-3/512/32-512.png"/>
+									Tambah Jadwal Jaga</div>
+								<div class="card-body">
+									<form th:action="@{/medical-supplies/jadwal-staf/tambah}"
+										method="get">
+										<div>
+											<button type="submit" class="btn btn-primary">Tambah Jadwal</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="card">
+								<div class="card-header bg-info" style="color: white">
+								<img height="25px" width="25px" src="https://cdn0.iconfinder.com/data/icons/shipping-and-logistics-part-3/512/32-512.png"/>
+									Lihat Jadwal Jaga</div>
+								<div class="card-body">
+									<form th:action="@{/medical-supplies/jadwal-staf/}"
+										method="get">
+										<div>
+											<button type="submit" class="btn btn-primary">Lihat Jadwal</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr th:if="${authority == 'ADMIN_FARMASI'}">
+				<div style="margin: 10px 10px 10px 10px;" class="container-fluid bg-6 text-center">
+					<h2 style="text-align:center;" th:if="${authority == 'STAF_APOTEKER'}">Menambah Perencanaan Berdasarkan Data Lab</h2>
+					<h2 style="text-align:center;" th:if="${authority == 'ADMIN_FARMASI'}">Data Medical Supplies Laboratorium</h2>
+					<div class="row">
+						<div class="col-sm-3" th:if="${authority == 'ADMIN_FARMASI'}"></div>
+					    <div class="col-sm-6">
 					     	<div class="card">
 								<div class="card-header bg-info" style="color:white">
-								<img height="25px" width="25px" src="http://cdn.onlinewebfonts.com/svg/img_347949.png"/>
-								    Data Medical Supplies Dari Lab
 								<img height="25px" width="25px" src="https://cdn4.iconfinder.com/data/icons/proglyphs-science-and-medicine/512/Lab-512.png"/>
+								    Data Medical Supplies Dari Lab
 								</div>
 								<div class="card-body">
 								  	<table class="table table-striped">
@@ -187,38 +158,104 @@
 								</div>
 							</div>
 					    </div>
-					    <div class="col-sm-4">
-					     	<div class="card">
-								<div class="card-header bg-info" style="color:white">
-								<img height="25px" width="25px" src="https://cdn1.iconfinder.com/data/icons/navigation-elements/512/user-login-man-human-body-mobile-person-512.png"/>
-								    Tambah User
+					    
+					    <div class="col-sm-6" th:if="${authority == 'STAF_APOTEKER'}">
+					    	<div class="card">
+								<div class="card-header bg-info" style="color: white">
+									<img height="25px" width="25px" src="https://image.flaticon.com/icons/png/512/567/567014.png"/>
+									<span th:text="'Tambah Perencanaan Untuk Minggu ke-' + ${mingguKe}"></span>
 								</div>
 								<div class="card-body">
-								  	<form th:action="@{/user/addUser}" method="post">
-								  		<div class="row form-group">
-								  			<label class="col-sm-4"> User Name</label>
-								  			<input class="col-sm-6 form-control input-sm" type="text" name="username"/>
-								  		</div>
-								  		<div class="row form-group">
-								  			<label class="col-sm-4"> Password </label>
-								  			<input class="col-sm-6 form-control input-sm" type="password" name="password"/>
-								  		</div>
-								  		<div class="row form-group">
-								  			<label class="col-sm-4"> Role </label>
-								  			<input class="col-sm-6 form-control input-sm" type="text" name="role"/>
-								  		</div>
-								  		<div>
-								  			<button type="submit" class="btn btn-primary">Simpan</button>
-								  		</div>
-								  	</form>
+									<form th:action="@{/medical-supplies/perencanaan/tambah}"method="POST" th:object="${perencanaan}">
+										<div class="form-group row">
+											<label for="id_medical_supplies"
+												class="col-sm-4 col-form-label">Medical Supplies</label>
+											<div class="col-sm-6">
+												<div>
+													<select class="form-control" required="required"
+														name="medicalSupplies">
+														<option disabled="disabled" selected="selected">Medical
+															Supplies</option>
+														<option th:each="medsup : ${listMedicalSupplies}"
+															th:value="${medsup.id}" th:text="${medsup.nama}"></option>
+													</select>
+												</div>
+											</div>
+										</div>
+										
+										<div class="form-group row">
+										   <label for="tanggal" class="col-sm-4 col-form-label">Tanggal</label>
+										   <div class="col-sm-6">
+										     <input type="date" class="form-control" name="tanggal" th:value="${perencanaan.tanggal}" readonly>
+										   </div>
+										</div>
+
+										<input type="hidden" class="form-control" name="status" th:value="Diajukan"> 
+										<input type="hidden" class="form-control" name="nama" value="sebuah perencanaan">
+
+										<div class="form-group row">
+										   <label for="jumlah" class="col-sm-4 col-form-label">Jumlah</label>
+										   <div class="col-sm-6">
+										     <input type="number" class="form-control" name="jumlah">
+										   </div>
+										</div>
+										
+										<button type="submit" class="btn btn-primary">Tambah</button>
+									</form>
 								</div>
 							</div>
 					    </div>
+
+					    </div>
+					</div>
+					<hr>
+					<div style="margin: 10px 10px 10px 10px;" class="container-fluid bg-4 text-center">
+					<h2 style="text-align:center;">User</h2>
+						<div class="row">
+							<div class="col-sm-4"></div>
+							<div class="col-sm-4">
+								<div class="card">
+									<div class="card-header bg-info" style="color: white">
+									<img height="25px" width="25px" src="https://cdn1.iconfinder.com/data/icons/navigation-elements/512/user-login-man-human-body-mobile-person-512.png"/>
+									
+									Tambah User
+									</div>
+									<div class="card-body">
+										<form th:action="@{/user/addUser}" method="post">
+											
+											<div class="row form-group">
+												<label class="col-sm-4"> User Name</label> <input
+													class="col-sm-6 form-control input-sm" type="text"
+													name="username" />
+											</div>
+											
+											<div class="row form-group">
+												<label class="col-sm-4"> Password </label> <input
+													class="col-sm-6 form-control input-sm" type="password"
+													name="password" />
+											</div>
+											
+											<div class="row form-group">
+												<label class="col-sm-4"> Role </label> 
+												<select class="col-sm-6 form-control" required="required" name="role">
+													<option disabled="disabled" selected="selected">Pilih Role</option>
+													<option value="STAF_APOTEKER">Staf Apoteker</option>
+													<option value="ADMIN_FARMASI">Admin Farmasi</option>
+												</select>
+											</div>
+											<div>
+												<button type="submit" class="btn btn-primary">Simpan</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>			
+			</div>
 		</div>
-	</div>
+		
 </body>
 
 </html>
