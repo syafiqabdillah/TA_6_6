@@ -99,7 +99,7 @@ public class JadwalJagaModel implements Serializable {
     }
 
     public Timestamp getWaktuMulaiTs() {
-        String[] waktu = waktuMulai.split("\\.");
+        String[] waktu = waktuMulai.split(":");
         Calendar cal = Calendar.getInstance();
         cal.setTime(tanggal);
         cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(waktu[0]));
@@ -112,7 +112,7 @@ public class JadwalJagaModel implements Serializable {
 
 
     public Timestamp getWaktuSelesaiTs() {
-        String[] waktu = waktuSelesai.split("\\.");
+        String[] waktu = waktuSelesai.split(":");
         Calendar cal = Calendar.getInstance();
         cal.setTime(tanggal);
         cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(waktu[0]));
