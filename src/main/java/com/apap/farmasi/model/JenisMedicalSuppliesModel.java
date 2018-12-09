@@ -23,7 +23,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="jenis_medical_supplies", schema="farmasi")
+@Table(name="jenis_medical_supplies", schema="public")
 public class JenisMedicalSuppliesModel implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
