@@ -39,7 +39,7 @@
 					<td th:if="${listStaff.id == jadwal.idStaff}" th:text="${jadwal.tanggal}"></td>
 					<td th:if="${listStaff.id == jadwal.idStaff}" th:text="${jadwal.waktuMulai}"></td>
 					<td th:if="${listStaff.id == jadwal.idStaff}" th:text="${jadwal.waktuSelesai}"></td>
-					<td th:if="${listStaff.id == jadwal.idStaff}"><a class="btn btn-info" th:href="@{'/medical-supplies/jadwal-staf/'+ ${jadwal.id}}">Detail</a></td>
+					<td th:if="${listStaff.id == jadwal.idStaff}"><a class="btn btn-info" th:href="@{'/medical-supplies/jadwal-staf/'+ ${jadwal.id}}">Ubah</a></td>
 				</span>
 			</tr>
 			</tbody>
