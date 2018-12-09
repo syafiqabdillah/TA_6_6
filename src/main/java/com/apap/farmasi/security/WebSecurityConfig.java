@@ -17,7 +17,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
-		http
+		http.csrf().disable()
 			.authorizeRequests()
 			.antMatchers("/css/**").permitAll()
 			.antMatchers("/js/**").permitAll()
@@ -54,4 +54,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception{
 		auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
 	}
+
 }
