@@ -37,8 +37,17 @@ public class JadwalJagaServiceImpl implements JadwalJagaService{
 
 	@Override
 	public void updateJadwalJaga(Long id, JadwalJagaModel jadwalJagaBaru) {
-		// TODO Auto-generated method stub
+		System.out.println(id);
+		JadwalJagaModel jadwalJaga = jadwalJagaDb.findById(id).get();
+
+		System.out.println(jadwalJagaBaru.getIdStaff());
+		System.out.println(jadwalJagaBaru.getTanggal());
+		System.out.println(jadwalJagaBaru.getWaktuSelesai());
 		
+		jadwalJaga.setTanggal(jadwalJagaBaru.getTanggal());
+		jadwalJaga.setWaktuMulai(jadwalJagaBaru.getWaktuMulai());
+		jadwalJaga.setWaktuSelesai(jadwalJagaBaru.getWaktuSelesai());
+		jadwalJaga.setIdStaff(jadwalJagaBaru.getIdStaff());
 	}
 
 	@Override
