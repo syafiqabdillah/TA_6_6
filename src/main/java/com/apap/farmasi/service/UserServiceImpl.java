@@ -3,11 +3,13 @@ package com.apap.farmasi.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.apap.farmasi.model.UserModel;
 import com.apap.farmasi.repository.UserDB;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserDB userDb;

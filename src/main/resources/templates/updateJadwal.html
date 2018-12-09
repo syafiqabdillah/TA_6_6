@@ -39,7 +39,7 @@
 				</tr>
 				<tr>
 					<td height="50">Tanggal :</td>
-					<td><input type="date" required="required" name="tanggal" th:value="*{tanggal}"/></td>
+					<td><input type="date" required="required" name="tanggal" th:value="*{tanggal}" th:attr="min=${dateNow}" /></td>
 				</tr>
 				<tr>
 					<td height="50">Waktu Mulai :</td>
@@ -53,6 +53,8 @@
 			<br>
 			<button type="submit" class="btn btn-success">Simpan</button>
 		</form>
+		<br>
+		<button onclick="location.href='/medical-supplies/jadwal-staf/';" class="btn btn-danger">Batalkan Perubahan</button>
 		</div>
 	</body>
 	

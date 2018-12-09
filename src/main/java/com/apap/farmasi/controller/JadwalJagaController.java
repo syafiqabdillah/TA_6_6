@@ -1,5 +1,6 @@
 package com.apap.farmasi.controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,8 +76,14 @@ public class JadwalJagaController {
 	//UPDATE
 	@RequestMapping(value = "medical-supplies/jadwal-staf/{idJadwal}", method = RequestMethod.GET)
 	public String updateJadwalJagaGET(@PathVariable("idJadwal") long idJadwal, Model model) {
+
+		String dateNow = (LocalDateTime.now().toString()).substring(0, 10);
+		model.addAttribute("dateNow", dateNow);
+		System.out.println(dateNow);
 		JadwalJagaModel jadwalJaga = jadwalJagaService.getJadwalJagaById(idJadwal);
+
 		model.addAttribute("jadwalJaga", jadwalJaga);
+
 		
 		//API get all staff
 		RestTemplate restTemplate = new RestTemplate();
