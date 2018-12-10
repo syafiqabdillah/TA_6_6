@@ -3,6 +3,7 @@ package com.apap.farmasi.controller;
 import java.util.List;
 
 
+import com.apap.farmasi.rest.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -93,18 +94,24 @@ public class MedicalSuppliesController {
 	@RequestMapping(value = "/medical-supplies/checkout/{id}", method = RequestMethod.POST)
 	private String checkOutSupplies(@PathVariable(value="id") long id,
 									@ModelAttribute MedicalSuppliesModel obatCheckOut, Model model) {
-		//String path = "";
+		String path = "https://apap-6-7.herokuapp.com/rawat-jalan/obat/tambah";
 		MedicalSuppliesModel obat = medicalSuppliesService.getMedicalSuppliesById(id);
 		ObatDetail obatDetail = new ObatDetail();
 		obatDetail.setNama(obat.getNama());
 		obatDetail.setId(obat.getId());
 		obatDetail.setJumlah(obatCheckOut.getJumlah());
 
-		//ObatDetail result = restTemplate.postForObject(path,obatDetail,ObatDetail.class);
+		BaseResponse result = restTemplate.postForObject(path,obatDetail,BaseResponse.class);
 
-		obat.setJumlah(obat.getJumlah()-obatCheckOut.getJumlah());
-		medicalSuppliesService.save(obat);
-		
+		//kalau result null berarti api tidak bekerja
+		if (result == null) {
+			obat.setJumlah(obat.getJumlah()-obatCheckOut.getJumlah());
+			medicalSuppliesService.save(obat);
+		} else if (result.getStatus() == 200) {
+			obat.setJumlah(obat.getJumlah()-obatCheckOut.getJumlah());
+			medicalSuppliesService.save(obat);
+		}
+
 		//update halaman view all med sup
 		List<MedicalSuppliesModel> listOfMedicalSupplies = medicalSuppliesService.getAll();
 		model.addAttribute("listOfMedicalSupplies",listOfMedicalSupplies);	
