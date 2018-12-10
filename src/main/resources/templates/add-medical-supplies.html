@@ -23,7 +23,7 @@
 					</div>
 						<form th:action="@{/medical-supplies/tambah}" th:object=${medicalSupplies} method="POST">
 							<input type="hidden" name = "id" th:value="${medicalSupplies.id}">
-							<input type="hidden" name = "jumlahMedicalSupplies" th:value=0>
+							<input type="hidden" name = "jumlah" th:value=0>
 							<table cellpadding ="10" align="center">
 								<tr>
 									<td>Nama</td>

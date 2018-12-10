@@ -33,7 +33,7 @@
 	    	<td th:text="${perencanaan.medicalSupplies.nama}"></td>
 	    	<td th:text="${perencanaan.status}"></td>
 	    	<td th:text="${perencanaan.tanggal}"></td>
-	    	<td th:text="${perencanaan.jumlahMedicalSupplies}"></td>
+	    	<td th:text="${perencanaan.jumlah}"></td>
 	    	<td> 
 		    	<form th:action="@{/medical-supplies/updateStatus}" method="GET">
 					<input type="hidden" name="id" class="form-control" th:value="${perencanaan.id}"/>

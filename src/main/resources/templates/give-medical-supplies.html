@@ -33,9 +33,9 @@
 						</div>
 						
 						<div class="form-group row">
-						   <label for="jumlahMedicalSupplies" class="col-sm-4 col-form-label">Jumlah</label>
+						   <label for="jumlah" class="col-sm-4 col-form-label">Jumlah</label>
 						   <div class="col-sm-6">
-						     <input type="number" class="form-control" th:value="${obat.jumlahMedicalSupplies}" readonly>
+						     <input type="number" class="form-control" th:value="${obat.jumlah}" readonly>
 						   </div>
 						</div>
 						
@@ -47,10 +47,10 @@
 						</div>
 						
 			        	<div class="form-group row">
-						   <label for="jumlahMedicalSupplies" class="col-sm-4 col-form-label">Jumlah</label>
+						   <label for="jumlah" class="col-sm-4 col-form-label">Jumlah</label>
 						   <div class="col-sm-6">
 						   		<form th:action="@{|/medical-supplies/checkout/${obat.id}|}" th:object="${obatCheckOut}" method="POST">
-					                <input type="number" id="jumlahMedicalSupplies" name="jumlahMedicalSupplies" th:value="*{jumlahMedicalSupplies}">
+					                <input type="number" id="jumlah" name="jumlah" th:value="*{jumlah}">
 					                <button type="submit" class="btn btn-primary">Simpan</button>
 					            </form>
 						   </div>
