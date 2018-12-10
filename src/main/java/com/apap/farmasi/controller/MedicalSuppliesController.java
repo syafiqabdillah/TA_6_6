@@ -62,7 +62,7 @@ public class MedicalSuppliesController {
 	@RequestMapping(value="/medical-supplies/tambah", method = RequestMethod.POST)
 	private String addMedicalSuppliesSubmit(@ModelAttribute MedicalSuppliesModel medicalSupplies) {
 		medicalSuppliesService.addMedicalSupplies(medicalSupplies);
-		return "added-medical-supplies";
+		return "redirect:";
 	}
 	
 	@RequestMapping(value="/medical-supplies/ubah/{id}", method=RequestMethod.GET)
@@ -76,7 +76,8 @@ public class MedicalSuppliesController {
 	@RequestMapping (value = "/medical-supplies/ubah", method = RequestMethod.POST)
 	private String updateMedicalSuppliesSubmit(@ModelAttribute MedicalSuppliesModel medicalSupplies){
 		medicalSuppliesService.updateMedicalSupplies(medicalSupplies, medicalSupplies.getId());
-		return "updated-medical-supplies";
+		long idMS = medicalSupplies.getId();
+		return "redirect:/medical-supplies/" + idMS;
 	}
 
 	@RequestMapping(value = "/medical-supplies/checkout/{id}", method = RequestMethod.GET)
