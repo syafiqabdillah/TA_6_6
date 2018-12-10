@@ -14,6 +14,7 @@ public class TambahPermintaanDetail implements Serializable {
     @NotNull
     int idPasien;
     @NotNull
+    @Range(min = 1)
     int jumlahMedicalSupplies;
 
 

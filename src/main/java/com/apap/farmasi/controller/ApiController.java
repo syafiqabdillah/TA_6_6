@@ -2,7 +2,9 @@ package com.apap.farmasi.controller;
 
 import java.lang.reflect.Field;
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 
 import com.apap.farmasi.model.JadwalJagaModel;
@@ -61,7 +63,7 @@ public class ApiController {
             PermintaanModel permintaan = new PermintaanModel();
             permintaan.setIdPasien(permintaanDetail.getIdPasien());
             permintaan.setMedicalSupplies(medicalSuppliesService.getMedicalSuppliesByNama(permintaanDetail.getNamaObat()));
-            permintaan.setTanggal(Timestamp.valueOf(LocalDateTime.now()));
+            permintaan.setTanggal(Timestamp.valueOf(LocalDateTime.now().plusHours(7)));
             permintaan.setJumlahMedicalSupplies(permintaanDetail.getJumlahMedicalSupplies());
             permintaan.setStatusPermintaan(statusPermintaanService.findById(1));
 
@@ -71,7 +73,7 @@ public class ApiController {
             for (JadwalJagaModel jadwal : allJadwal) {
                 Timestamp mulai = jadwal.getWaktuMulaiTs();
                 Timestamp selesai = jadwal.getWaktuSelesaiTs();
-                Timestamp waktuPermintaan = Timestamp.valueOf(LocalDateTime.now());
+                Timestamp waktuPermintaan = Timestamp.valueOf(LocalDateTime.now().plusHours(7));
 
                 if (waktuPermintaan.after(mulai) && waktuPermintaan.before(selesai)) {
                     permintaan.setJadwalPermintaan(jadwal);
