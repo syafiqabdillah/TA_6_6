@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.apap.farmasi.model.MedicalSuppliesModel;
 import com.apap.farmasi.service.MedicalSuppliesService;
+import com.apap.farmasi.rest.BaseResponse;
 
 @RestController
 @RequestMapping("/api")
@@ -39,9 +40,12 @@ public class ApiController {
 	PermintaanService permintaanService;
 	
 	@GetMapping(value="/daftar-medical-service")
-	public @ResponseBody List<MedicalSuppliesModel> getAllMedicalSupplies(){
-		List<MedicalSuppliesModel> listOfMedSupplies = medicalSuppliesService.getAll();
-		return listOfMedSupplies;
+	public BaseResponse<List<MedicalSuppliesModel>> getAllMedicalSupplies(){
+		BaseResponse<List<MedicalSuppliesModel>> response = new BaseResponse<List<MedicalSuppliesModel>>();
+		response.setStatus(200);
+		response.setMessage("success");
+		response.setResult(medicalSuppliesService.getAll());
+		return response;
 	}
 
 	@PostMapping(value="/medical-supplies/permintaan/")
