@@ -31,7 +31,7 @@
 		            </tr>
 		            <tr>
 		                <th>Jumlah</th>
-		                <td th:text="${permintaan.jumlah}"></td>
+		                <td th:text="${permintaan.jumlahMedicalSupplies}"></td>
 		            </tr>
 		            <tr>
 		                <th>Jenis</th>
@@ -42,7 +42,7 @@
 		            <form th:action="@{/medical-supplies/permintaan/ubah}" th:object=${permintaan} method="POST">
 		                <input type="hidden" name="id" th:value="*{id}">
 		                <input type="hidden" name="tanggal" th:value="*{tanggal}">
-		                <input type="hidden" name="jumlah" th:value="*{jumlah}">
+		                <input type="hidden" name="jumlahMedicalSupplies" th:value="*{jumlahMedicalSupplies}">
 		                <input type="hidden" name="idPasien" th:value="*{idPasien}">
 		                <input type="hidden" name="medicalSupplies" th:field="*{medicalSupplies}" th:value="${permintaan.medicalSupplies}">
 		                <input type="hidden" name="jadwalPermintaan" th:field="*{jadwalPermintaan}" th:value="${permintaan.jadwalPermintaan}">
