@@ -37,7 +37,7 @@
 									<td>Jenis Medical Supplies</td>
 									<td>
 										<select class="form-control" required="required" name="jenisMedicalSupplies" id="archive">
-											<option disabled="disabled" selected="selected" >-- Jenis Medical Supplies --</option>
+											<option disabled="disabled" selected="selected">-- Jenis Medical Supplies --</option>
 											<option th:each="jenisMedicalSupplies : ${jenisMedicalSupplies}" th:value="${jenisMedicalSupplies.id}" th:text="${jenisMedicalSupplies.jenisMedicalSupplies}"></option>
 										</select>
 									</td>
