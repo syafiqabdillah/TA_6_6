@@ -37,9 +37,16 @@
 	    	<td> 
 		    	<form th:action="@{/medical-supplies/updateStatus}" method="GET">
 					<input type="hidden" name="id" class="form-control" th:value="${perencanaan.id}"/>
-					<button type="submit" class="btn btn-primary" th:if="${perencanaan.status == 'Tersedia'}" disabled>Ubah Status</button>
-					<button type="submit" class="btn btn-primary" th:if="${perencanaan.status == 'Diproses'}">Ubah Status</button>
-					<button type="submit" class="btn btn-primary" th:if="${perencanaan.status == 'Diajukan'}">Ubah Status</button>
+					<div th:if="${authority == 'ADMIN_FARMASI'}">
+						<button type="submit" class="btn btn-primary" th:if="${perencanaan.status == 'Tersedia'}"disabled>Ubah Status</button>
+						<button type="submit" class="btn btn-primary" th:if="${perencanaan.status == 'Diproses'}" >Ubah Status</button>
+						<button type="submit" class="btn btn-primary" th:if="${perencanaan.status == 'Diajukan'}" >Ubah Status</button>
+					</div>
+					<div th:if="${authority == 'STAF_APOTEKER'}">
+						<button type="submit" class="btn btn-primary" th:if="${perencanaan.status == 'Tersedia'}" disabled>Ubah Status</button>
+						<button type="submit" class="btn btn-primary" th:if="${perencanaan.status == 'Diproses'}" disabled>Ubah Status</button>
+						<button type="submit" class="btn btn-primary" th:if="${perencanaan.status == 'Diajukan'}" disabled>Ubah Status</button>
+					</div>
 				</form>
 	    	</td>
 	    </tr>

@@ -17,9 +17,8 @@
 				src="https://i.pinimg.com/originals/7e/88/cc/7e88cce2beec5f097aa60245d9d70fc0.png"
 				height="100px" width="100px" />
 		</div>
-		<h2 style="text-align: center;"
-			th:text=" 'Selamat Datang di SI Farmasi, ' + ${#httpServletRequest.remoteUser} + ' !'">Login
-			as</h2>
+		<h2 th:if="${authority == 'STAF_APOTEKER'}" style="text-align: center;" th:text=" 'Selamat Datang di SI Farmasi, Staff ' + ${#httpServletRequest.remoteUser} + ' !'">Loginas</h2>
+		<h2 th:if="${authority == 'ADMIN_FARMASI'}" style="text-align: center;" th:text=" 'Selamat Datang di SI Farmasi, Admin ' + ${#httpServletRequest.remoteUser} + ' !'">Loginas</h2>
 		<hr>
 		<div class="row">
 			<div class="col-md-12">
@@ -205,56 +204,11 @@
 								</div>
 							</div>
 					    </div>
-					    </div>
-					</div>
-					<hr>
-					<div style="margin: 10px 10px 10px 10px;" class="container-fluid bg-4 text-center">
-					<h2 style="text-align:center;">User</h2>
-						<div class="row">
-							<div class="col-sm-4"></div>
-							<div class="col-sm-4">
-								<div class="card">
-									<div class="card-header bg-info" style="color: white">
-									<img height="25px" width="25px" src="https://cdn1.iconfinder.com/data/icons/navigation-elements/512/user-login-man-human-body-mobile-person-512.png"/>
-									
-									Tambah User
-									</div>
-									<div class="card-body">
-										<form th:action="@{/user/addUser}" method="post">
-											
-											<div class="row form-group">
-												<label class="col-sm-4"> User Name</label> <input
-													class="col-sm-6 form-control input-sm" type="text"
-													name="username" />
-											</div>
-											
-											<div class="row form-group">
-												<label class="col-sm-4"> Password </label> <input
-													class="col-sm-6 form-control input-sm" type="password"
-													name="password" />
-											</div>
-											
-											<div class="row form-group">
-												<label class="col-sm-4"> Role </label> 
-												<select class="col-sm-6 form-control" required="required" name="role">
-													<option disabled="disabled" selected="selected">Pilih Role</option>
-													<option value="STAF_APOTEKER">Staf Apoteker</option>
-													<option value="ADMIN_FARMASI">Admin Farmasi</option>
-												</select>
-											</div>
-											<div>
-												<button type="submit" class="btn btn-primary">Simpan</button>
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+				    </div>
 				</div>
 			</div>
 		</div>
-		
+	</div>
 </body>
 
 </html>
