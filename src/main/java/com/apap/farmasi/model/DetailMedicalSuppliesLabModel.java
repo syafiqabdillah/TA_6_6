@@ -1,5 +1,8 @@
 package com.apap.farmasi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class DetailMedicalSuppliesLabModel {
 	private int id;
 	public int getId() {

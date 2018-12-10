@@ -82,7 +82,7 @@ public class PageController {
 		//membuat Object mapper 
     	ObjectMapper mapper = new ObjectMapper();
     	//path
-    	String path = "https://44d5b7c7-1ad6-43ca-8645-2673bcad019b.mock.pstmn.io/lab/kebutuhan/perencanaan";
+    	String path = "https://ta-apap-6-8.herokuapp.com/api/lab/kebutuhan/perencanaan";
     	//json  
     	String jsonLab = restTemplate.getForObject(path, String.class);
     	JsonNode jsonNodeLab = mapper.readTree(jsonLab);

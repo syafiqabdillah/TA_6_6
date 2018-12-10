@@ -17,7 +17,6 @@
 				src="https://i.pinimg.com/originals/7e/88/cc/7e88cce2beec5f097aa60245d9d70fc0.png"
 				height="100px" width="100px" />
 		</div>
-<<<<<<< HEAD
 		<h2 th:if="${authority == 'STAF_APOTEKER'}" style="text-align: center;" th:text=" 'Selamat Datang di SI Farmasi, Staff ' + ${#httpServletRequest.remoteUser} + ' !'">Loginas</h2>
 		<h2 th:if="${authority == 'ADMIN_FARMASI'}" style="text-align: center;" th:text=" 'Selamat Datang di SI Farmasi, Admin ' + ${#httpServletRequest.remoteUser} + ' !'">Loginas</h2>
 		<hr>
@@ -33,92 +32,37 @@
 								<div class="card-header bg-info" style="color: white">
 								<img height="25px" width="25px" src="http://cdn.onlinewebfonts.com/svg/img_347949.png"/>
 									Lihat Semua Medical Supplies</div>
-=======
-		<h2 th:if="${authority == 'STAF_APOTEKER'}"
-			style="text-align: center;"
-			th:text=" 'Selamat Datang di SI Farmasi, Staff ' + ${#httpServletRequest.remoteUser} + ' !'">Loginas</h2>
-		<h2 th:if="${authority == 'ADMIN_FARMASI'}"
-			style="text-align: center;"
-			th:text=" 'Selamat Datang di SI Farmasi, Admin ' + ${#httpServletRequest.remoteUser} + ' !'">Loginas</h2>
-		<h2 th:if="${authority == 'UMUM'}" style="text-align: center;"
-			th:text=" 'Selamat Datang di SI Farmasi, ' + ${#httpServletRequest.remoteUser} + ' !'">Loginas</h2>
-		<hr>
-		<div class="row">
-			<div class="col-md-12">
-				<div style="margin: 10px 10px 10px 10px;"
-					class="container-fluid bg-3 text-center">
-					<h2 style="text-align: center;">Medical Suplies</h2>
-					<div class="row">
-						<div class="col-sm-3"></div>
-
-						<div class="col-sm-3">
-							<div class="card">
-								<div class="card-header bg-info" style="color: white">
-									<img height="25px" width="25px"
-										src="http://cdn.onlinewebfonts.com/svg/img_347949.png" />
-									Lihat Semua Medical Supplies
-								</div>
->>>>>>> 2da3522c892a766d42ef77ceafecf390aaebb2b9
 								<div class="card-body">
 									<a class="btn btn-primary" th:href="@{/medical-supplies/}">Lihat
 										Medical Supplies</a>
 								</div>
 							</div>
 						</div>
-<<<<<<< HEAD
 						
 						<div class="col-sm-3" th:if="${authority == 'ADMIN_FARMASI'}">
 							<div class="card">
 								<div class="card-header bg-info" style="color: white">
 								<img height="25px" width="25px" src="http://cdn.onlinewebfonts.com/svg/img_347949.png"/>
 									Tambah Medical Supplies</div>
-=======
-
-						<div class="col-sm-3" th:if="${authority == 'ADMIN_FARMASI'}">
-							<div class="card">
-								<div class="card-header bg-info" style="color: white">
-									<img height="25px" width="25px"
-										src="http://cdn.onlinewebfonts.com/svg/img_347949.png" />
-									Tambah Medical Supplies
-								</div>
->>>>>>> 2da3522c892a766d42ef77ceafecf390aaebb2b9
 								<div class="card-body">
 									<a class="btn btn-primary"
 										th:href="@{/medical-supplies/tambah/}">Tambah</a>
 								</div>
 							</div>
 						</div>
-<<<<<<< HEAD
 						
 					</div>
 				</div>
 				<hr>
 				<div style="margin: 10px 10px 10px 10px;" class="container-fluid bg-3 text-center">
 					<h2 style="text-align:center;">Permintaan & Perencanaan Medical Supplies</h2>
-=======
-
-					</div>
-				</div>
-				<hr>
-				<div style="margin: 10px 10px 10px 10px;"
-					class="container-fluid bg-3 text-center">
-					<h2 style="text-align: center;">Permintaan & Perencanaan
-						Medical Supplies</h2>
->>>>>>> 2da3522c892a766d42ef77ceafecf390aaebb2b9
 					<div class="row">
 						<div class="col-sm-3"></div>
 						<div class="col-sm-3">
 							<div class="card">
 								<div class="card-header bg-info" style="color: white">
-<<<<<<< HEAD
 								<img height="25px" width="25px" src="https://png.pngtree.com/svg/20160308/request_801865.png"/>
 									Lihat Detail Permintaan</div>
-=======
-									<img height="25px" width="25px"
-										src="https://png.pngtree.com/svg/20160308/request_801865.png" />
-									Lihat Detail Permintaan
-								</div>
->>>>>>> 2da3522c892a766d42ef77ceafecf390aaebb2b9
 								<div class="card-body">
 									<form th:action="@{/medical-supplies/permintaan/}" method="get">
 										<div>
@@ -132,15 +76,8 @@
 						<div class="col-sm-3">
 							<div class="card">
 								<div class="card-header bg-info" style="color: white">
-<<<<<<< HEAD
 								<img height="25px" width="25px" src="https://image.flaticon.com/icons/png/512/567/567014.png"/>
 									Lihat Detail Perencanaan</div>
-=======
-									<img height="25px" width="25px"
-										src="https://image.flaticon.com/icons/png/512/567/567014.png" />
-									Lihat Detail Perencanaan
-								</div>
->>>>>>> 2da3522c892a766d42ef77ceafecf390aaebb2b9
 								<div class="card-body">
 									<form th:action="@{/medical-supplies/perencanaan/}"
 										method="get">
@@ -154,29 +91,15 @@
 					</div>
 				</div>
 				<hr>
-<<<<<<< HEAD
 				<div style="margin: 10px 10px 10px 10px;" class="container-fluid bg-3 text-center" th:if="${authority == 'ADMIN_FARMASI'}">
 					<h2 style="text-align:center;">Jadwal Jaga</h2>
-=======
-				<div style="margin: 10px 10px 10px 10px;"
-					class="container-fluid bg-3 text-center"
-					th:if="${authority == 'ADMIN_FARMASI'}">
-					<h2 style="text-align: center;">Jadwal Jaga</h2>
->>>>>>> 2da3522c892a766d42ef77ceafecf390aaebb2b9
 					<div class="row">
 						<div class="col-sm-3"></div>
 						<div class="col-sm-3">
 							<div class="card">
 								<div class="card-header bg-info" style="color: white">
-<<<<<<< HEAD
 								<img height="25px" width="25px" src="https://cdn0.iconfinder.com/data/icons/shipping-and-logistics-part-3/512/32-512.png"/>
 									Tambah Jadwal Jaga</div>
-=======
-									<img height="25px" width="25px"
-										src="https://cdn0.iconfinder.com/data/icons/shipping-and-logistics-part-3/512/32-512.png" />
-									Tambah Jadwal Jaga
-								</div>
->>>>>>> 2da3522c892a766d42ef77ceafecf390aaebb2b9
 								<div class="card-body">
 									<form th:action="@{/medical-supplies/jadwal-staf/tambah}"
 										method="get">
@@ -190,25 +113,13 @@
 						<div class="col-sm-3">
 							<div class="card">
 								<div class="card-header bg-info" style="color: white">
-<<<<<<< HEAD
 								<img height="25px" width="25px" src="https://cdn0.iconfinder.com/data/icons/shipping-and-logistics-part-3/512/32-512.png"/>
 									Lihat Jadwal Jaga</div>
-=======
-									<img height="25px" width="25px"
-										src="https://cdn0.iconfinder.com/data/icons/shipping-and-logistics-part-3/512/32-512.png" />
-									Lihat Jadwal Jaga
-								</div>
->>>>>>> 2da3522c892a766d42ef77ceafecf390aaebb2b9
 								<div class="card-body">
 									<form th:action="@{/medical-supplies/jadwal-staf/}"
 										method="get">
 										<div>
-<<<<<<< HEAD
 											<button type="submit" class="btn btn-primary">Lihat Jadwal</button>
-=======
-											<button type="submit" class="btn btn-primary">Lihat
-												Jadwal</button>
->>>>>>> 2da3522c892a766d42ef77ceafecf390aaebb2b9
 										</div>
 									</form>
 								</div>
@@ -217,7 +128,6 @@
 					</div>
 				</div>
 				<hr th:if="${authority == 'ADMIN_FARMASI'}">
-<<<<<<< HEAD
 				<div style="margin: 10px 10px 10px 10px;" class="container-fluid bg-6 text-center">
 					<h2 style="text-align:center;" th:if="${authority == 'STAF_APOTEKER'}">Menambah Perencanaan Berdasarkan Data Lab</h2>
 					<h2 style="text-align:center;" th:if="${authority == 'ADMIN_FARMASI'}">Data Medical Supplies Laboratorium</h2>
@@ -253,52 +163,6 @@
 								<div class="card-header bg-info" style="color: white">
 									<img height="25px" width="25px" src="https://image.flaticon.com/icons/png/512/567/567014.png"/>
 									<span th:text="'Tambah Perencanaan Untuk Minggu ke-' + ${mingguKe}"></span>
-=======
-				<div style="margin: 10px 10px 10px 10px;"
-					class="container-fluid bg-6 text-center">
-					<h2 style="text-align: center;"
-						th:if="${authority == 'STAF_APOTEKER'}">Menambah Perencanaan
-						Berdasarkan Data Lab</h2>
-					<h2 style="text-align: center;"
-						th:if="${authority == 'ADMIN_FARMASI' || authority == 'UMUM'}">Data
-						Medical Supplies Laboratorium</h2>
-					<div class="row">
-						<div class="col-sm-3"
-							th:if="${authority == 'ADMIN_FARMASI' || authority == 'UMUM'}"></div>
-						<div class="col-sm-6">
-							<div class="card">
-								<div class="card-header bg-info" style="color: white">
-									<img height="25px" width="25px"
-										src="https://cdn4.iconfinder.com/data/icons/proglyphs-science-and-medicine/512/Lab-512.png" />
-									Data Medical Supplies Dari Lab
-								</div>
-								<div class="card-body">
-									<table class="table table-striped">
-										<thead>
-											<tr>
-												<th>Medical Supplies</th>
-												<th>Jumlah</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr th:each="medsup : ${medsupLab}">
-												<td th:text="${medsup.nama}"></td>
-												<td th:text="${medsup.jumlah}"></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6" th:if="${authority == 'STAF_APOTEKER'}">
-							<div class="card">
-								<div class="card-header bg-info" style="color: white">
-									<img height="25px" width="25px"
-										src="https://image.flaticon.com/icons/png/512/567/567014.png" />
-									<span
-										th:text="'Tambah Perencanaan Untuk Minggu ke-' + ${mingguKe}"></span>
->>>>>>> 2da3522c892a766d42ef77ceafecf390aaebb2b9
 								</div>
 								<div class="card-body">
 									<form th:action="@{/medical-supplies/perencanaan/tambah}"method="POST" th:object="${perencanaan}">
@@ -334,71 +198,17 @@
 										     <input type="number" class="form-control" name="jumlah">
 										   </div>
 										</div>
-<<<<<<< HEAD
 										
-=======
-
->>>>>>> 2da3522c892a766d42ef77ceafecf390aaebb2b9
 										<button type="submit" class="btn btn-primary">Tambah</button>
 									</form>
 								</div>
 							</div>
-<<<<<<< HEAD
 					    </div>
 				    </div>
-=======
-						</div>
-					</div>
-				</div>
-				<hr th:if="${authority == 'ADMIN_FARMASI'}">
-				<div style="margin: 10px 10px 10px 10px;"
-					class="container-fluid bg-6 text-center"
-					th:if="${authority == 'ADMIN_FARMASI'}">
-					<h2 style="text-align: center;">Tambah User Baru</h2>
-					<div class="row">
-						<div class="col-sm-3"></div>
-						<div class="col-sm-6">
-							<div class="card">
-								<div class="card-header bg-info" style="color: white">
-									<img height="40px" width="40px"
-										src="https://cdn1.iconfinder.com/data/icons/avatar-1-2/512/Add_User1-512.png" />
-									Daftar User Baru
-								</div>
-								<div class="card-body">
-									<form th:action="@{/user/addUser}" method="post">
-										<div class="row form-group">
-											<label class="col-sm-4"> User Name</label> <input
-												class="col-sm-6 form-control input-sm" type="text"
-												name="username" pattern=".{8,}"
-												title="Must contain at least 8 or more characters" required />
-										</div>
-										<div class="row form-group">
-											<label class="col-sm-4"> Password </label> <input
-												class="col-sm-6 form-control input-sm" type="password"
-												name="password"
-												pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-												title="Must contain at least one number, uppercase, and lowercase, and at least 8 or more characters"
-												required />
-										</div>
-										<div class="row form-group">
-											<label class="col-sm-4"> Role </label> <select
-												class="col-sm-6 form-control" name="role" required>
-												<option th:value="STAF_APOTEKER">STAF APOTEKER</option>
-												<option th:value="ADMIN_FARMASI">ADMIN FARMASI</option>
-												<option th:value="UMUM">UMUM</option>
-											</select>
-										</div>
-										<br> <br>
-										<button type="submit" class="btn btn-success">Sign Up</button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
->>>>>>> 2da3522c892a766d42ef77ceafecf390aaebb2b9
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 
 </html>
