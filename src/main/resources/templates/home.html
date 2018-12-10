@@ -17,8 +17,14 @@
 				src="https://i.pinimg.com/originals/7e/88/cc/7e88cce2beec5f097aa60245d9d70fc0.png"
 				height="100px" width="100px" />
 		</div>
-		<h2 th:if="${authority == 'STAF_APOTEKER'}" style="text-align: center;" th:text=" 'Selamat Datang di SI Farmasi, Staff ' + ${#httpServletRequest.remoteUser} + ' !'">Loginas</h2>
-		<h2 th:if="${authority == 'ADMIN_FARMASI'}" style="text-align: center;" th:text=" 'Selamat Datang di SI Farmasi, Admin ' + ${#httpServletRequest.remoteUser} + ' !'">Loginas</h2>
+		<h2 th:if="${authority == 'STAF_APOTEKER'}"
+			style="text-align: center;"
+			th:text=" 'Selamat Datang di SI Farmasi, Staff ' + ${#httpServletRequest.remoteUser} + ' !'">Loginas</h2>
+		<h2 th:if="${authority == 'ADMIN_FARMASI'}"
+			style="text-align: center;"
+			th:text=" 'Selamat Datang di SI Farmasi, Admin ' + ${#httpServletRequest.remoteUser} + ' !'">Loginas</h2>
+		<h2 th:if="${authority == 'UMUM'}" style="text-align: center;"
+			th:text=" 'Selamat Datang di SI Farmasi, ' + ${#httpServletRequest.remoteUser} + ' !'">Loginas</h2>
 		<hr>
 		<div class="row">
 			<div class="col-md-12">
@@ -33,7 +39,8 @@
 							<div class="card">
 								<div class="card-header bg-info" style="color: white">
 								<img height="25px" width="25px" src="http://cdn.onlinewebfonts.com/svg/img_347949.png"/>
-									Lihat Semua Medical Supplies</div>
+									Lihat Semua Medical Supplies
+								</div>
 								<div class="card-body">
 									<a class="btn btn-primary" th:href="@{/medical-supplies/}">Lihat
 										Medical Supplies</a>
