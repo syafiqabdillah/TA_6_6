@@ -46,29 +46,29 @@ p {
 							<table width=80%>
 								<tr>
 									<th>Nama</th>
-									<td th:text="${medicalSupplies.nama}"></td>
+									<td th:text="': '+${medicalSupplies.nama}"></td>
 								</tr>
 								<tr>
 									<th>Jumlah</th>
-									<td th:text="${medicalSupplies.jumlah}"></td>
+									<td th:text="': '+${medicalSupplies.jumlah}"></td>
 								</tr>
 								<tr>
 									<th>Harga</th>
-									<td th:text="${medicalSupplies.price}"></td>
+									<td th:text="': Rp'+${medicalSupplies.price}"></td>
 								</tr>
 								<tr>
 									<th>Deskripsi</th>
-									<td th:text="${medicalSupplies.deskripsi}"></td>
+									<td th:text="': '+${medicalSupplies.deskripsi}"></td>
 								</tr>
 								<tr>
 									<th>Jenis Medical Supplies</th>
-									<td th:text="${medicalSupplies.jenisMedicalSupplies.jenisMedicalSupplies}"></td>
+									<td th:text="': '+${medicalSupplies.jenisMedicalSupplies.jenisMedicalSupplies}"></td>
 								</tr>
 								<tr>
 									<th>Medical Supplies Urgent</th>
 									<td><div th:switch="${medicalSupplies.jenisMedicalSupplies.urgent.flag}">
-										  <p th:case="1">Ya</p>
-										  <p th:case="0">Tidak</p>
+										  <p th:case="1">: Urgent</p>
+										  <p th:case="0">: Tidak Urgent</p>
 										</div>
 									</td>
 								</tr>		
