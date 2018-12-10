@@ -50,7 +50,7 @@
 						   <label for="jumlah" class="col-sm-4 col-form-label">Jumlah</label>
 						   <div class="col-sm-6">
 						   		<form th:action="@{|/medical-supplies/checkout/${obat.id}|}" th:object="${obatCheckOut}" method="POST">
-					                <input type="number" id="jumlah" name="jumlah" th:value="*{jumlah}">
+					                <input type="number" id="jumlah" name="jumlah" th:value="*{jumlah}" th:max="*{jumlah}">
 					                <button type="submit" class="btn btn-primary">Simpan</button>
 					            </form>
 						   </div>
@@ -63,15 +63,6 @@
 		</div>  	
 	</div>
 </div>
-
-<script>
-function checkQty() {
-    var x = document.getElementById("jumlahMedicalSupplies").value;
-    if (x > ${obat.jumlah}) {
-    	alert("kelebihan")
-    }
-}
-</script>
 
 </body>
 

@@ -111,8 +111,13 @@ public class PermintaanController {
 	public String updatePermintaan(@PathVariable(value="idPermintaan") long id, Model model) {
 		PermintaanModel permintaan = permintaanService.findById(id);
 
+		List<StatusPermintaanModel> statusPermintaanList = statusPermintaanService.findAll();
+
+		if (permintaan.getJumlahMedicalSupplies() > permintaan.getMedicalSupplies().getJumlah())
+			statusPermintaanList.remove(statusPermintaanService.findById(2));
+
 		model.addAttribute("permintaan", permintaan);
-		model.addAttribute("statusPermintaan", statusPermintaanService.findAll());
+		model.addAttribute("statusPermintaan", statusPermintaanList);
 
 		return "update-permintaan";
 	}
