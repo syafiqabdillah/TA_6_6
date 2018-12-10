@@ -45,7 +45,7 @@
 							<label class="control-label col-sm-4">Jenis Medical Supplies:</label>
 							<div class="col-sm-10">
 						    	<select class="form-control" required="required" name="jenisMedicalSupplies" id="archive">
-									<option disabled="disabled" th:value="${medicalSupplies.jenisMedicalSupplies.id}" th:text="'Jenis Medical Supplies Sebelumnya : ' + ${medicalSupplies.jenisMedicalSupplies.jenisMedicalSupplies}">--Jenis Medical Supplies--</option>
+									<option th:value="${medicalSupplies.jenisMedicalSupplies.id}" th:text="${medicalSupplies.jenisMedicalSupplies.jenisMedicalSupplies}">--Jenis Medical Supplies--</option>
 									<option th:each="jenisMedicalSupplies : ${jenisMedicalSupplies}" th:value="${jenisMedicalSupplies.id}" th:text="${jenisMedicalSupplies.jenisMedicalSupplies}"></option>
 								</select>
 						    </div>
