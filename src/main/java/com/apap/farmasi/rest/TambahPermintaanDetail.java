@@ -1,15 +1,20 @@
 package com.apap.farmasi.rest;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.Range;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TambahPermintaanDetail implements Serializable {
+    @NotNull
     String namaObat;
+    @NotNull
     int idPasien;
-    int jumlah;
+    @NotNull
+    int jumlahMedicalSupplies;
 
 
     public int getIdPasien() {
@@ -28,11 +33,11 @@ public class TambahPermintaanDetail implements Serializable {
         this.namaObat = namaObat;
     }
 
-    public int getJumlah() {
-        return jumlah;
+    public int getJumlahMedicalSupplies() {
+        return jumlahMedicalSupplies;
     }
 
-    public void setJumlah(int jumlah) {
-        this.jumlah = jumlah;
+    public void setJumlahMedicalSupplies(int jumlahMedicalSupplies) {
+        this.jumlahMedicalSupplies = jumlahMedicalSupplies;
     }
 }
