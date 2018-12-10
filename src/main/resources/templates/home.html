@@ -65,12 +65,8 @@
 								<img height="25px" width="25px" src="https://png.pngtree.com/svg/20160308/request_801865.png"/>
 									Lihat Detail Permintaan</div>
 								<div class="card-body">
-									<form th:action="@{/medical-supplies/permintaan/}" method="get">
-										<div>
-											<button type="submit" class="btn btn-primary">Lihat
-												Permintaan</button>
-										</div>
-									</form>
+									<a th:href="@{/medical-supplies/permintaan/}"
+										class="btn btn-primary">Lihat Permintaan</a>
 								</div>
 							</div>
 						</div>
@@ -80,12 +76,7 @@
 								<img height="25px" width="25px" src="https://image.flaticon.com/icons/png/512/567/567014.png"/>
 									Lihat Detail Perencanaan</div>
 								<div class="card-body">
-									<form th:action="@{/medical-supplies/perencanaan/}"
-										method="get">
-										<div>
-											<button type="submit" class="btn btn-primary">Lihat Perencanaan</button>
-										</div>
-									</form>
+									<a th:href="@{/medical-supplies/perencanaan/}" class="btn btn-primary">Lihat Perencanaan</a>
 								</div>
 							</div>
 						</div>
@@ -102,12 +93,7 @@
 								<img height="25px" width="25px" src="https://cdn0.iconfinder.com/data/icons/shipping-and-logistics-part-3/512/32-512.png"/>
 									Tambah Jadwal Jaga</div>
 								<div class="card-body">
-									<form th:action="@{/medical-supplies/jadwal-staf/tambah}"
-										method="get">
-										<div>
-											<button type="submit" class="btn btn-primary">Tambah Jadwal</button>
-										</div>
-									</form>
+									<a class="btn btn-primary" th:href="@{/medical-supplies/jadwal-staf/tambah}">Tambah Jadwal</a>
 								</div>
 							</div>
 						</div>
@@ -117,12 +103,7 @@
 								<img height="25px" width="25px" src="https://cdn0.iconfinder.com/data/icons/shipping-and-logistics-part-3/512/32-512.png"/>
 									Lihat Jadwal Jaga</div>
 								<div class="card-body">
-									<form th:action="@{/medical-supplies/jadwal-staf/}"
-										method="get">
-										<div>
-											<button type="submit" class="btn btn-primary">Lihat Jadwal</button>
-										</div>
-									</form>
+									<a class="btn btn-primary" th:href="@{/medical-supplies/jadwal-staf/}">Lihat Jadwal</a>
 								</div>
 							</div>
 						</div>
