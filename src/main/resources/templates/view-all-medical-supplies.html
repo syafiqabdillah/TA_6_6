@@ -33,10 +33,10 @@
 			<tbody>
 				<tr th:each="medicalSupplies : *{listOfMedicalSupplies}">
 					<td><a th:href="@{'/medical-supplies/' + ${medicalSupplies.id}}" th:text="${medicalSupplies.nama}"></a></td>
-					<td th:text="${medicalSupplies.jumlah}"></td>
+					<td th:text="${medicalSupplies.jumlahMedicalSupplies}"></td>
 					<td th:text="'Rp ' +${medicalSupplies.price}"></td>
 					<td>
-						<form th:action="@{|/medical-supplies/checkout/${medicalSupplies.id}|}" method="GET">
+						<form th:if="${medicalSupplies.jumlahMedicalSupplies > 0}" th:action="@{|/medical-supplies/checkout/${medicalSupplies.id}|}" method="GET">
 							<button class="btn btn-primary">Tambah ke Rawat Jalan</button>
 						</form>
 					</td>

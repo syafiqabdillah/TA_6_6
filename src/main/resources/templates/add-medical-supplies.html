@@ -5,7 +5,6 @@
 	
 	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
 	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -22,9 +21,9 @@
 					<div class="card-header" align="center">
 						<p align ="center">Menambahkan Medical Supplies</p>
 					</div>
-						<form name="myForm" th:action="@{/medical-supplies/tambah}" th:object=${medicalSupplies} method="POST">
+						<form th:action="@{/medical-supplies/tambah}" th:object=${medicalSupplies} method="POST">
 							<input type="hidden" name = "id" th:value="${medicalSupplies.id}">
-							<input type="hidden" name = "jumlah" th:value="0">
+							<input type="hidden" name = "jumlahMedicalSupplies" th:value=0>
 							<table cellpadding ="10" align="center">
 								<tr>
 									<td>Nama</td>
@@ -32,11 +31,11 @@
 								</tr>
 								<tr>
 									<td>Price</td>
-									<td><input type="number" id= "checked" min="0" name="price" th:placeholder="'Rp'" th:value="${medicalSupplies.price}"class="form-control"  /></td>
+									<td><input type="text" name="price" th:value="${medicalSupplies.price}"class="form-control"/></td>
 								</tr>
 								<tr>
 									<td>Deskripsi</td>
-									<td><input type="text" name="deskripsi"  th:value="${medicalSupplies.deskripsi}" class="form-control"/></td>
+									<td><input type="text" name="deskripsi" th:value="${medicalSupplies.deskripsi}" class="form-control"/></td>
 								</tr>
 								<tr>
 									<td>Jenis Medical Supplies</td>
@@ -57,16 +56,4 @@
 			</div>
 		</div>
 </body>
-<script type="text/javascript">
-$(function(){
-	   $('#archive option:selected').hide(); 
-	   $('#archive').change(function(){
-	   	$('#archive option').show(200, function(){
-	   		$('#archive option:selected').hide();
-	       });
-	   });
-	});
-
-
-</script>
 </html>

@@ -43,9 +43,9 @@
 							  		</div>
 						  		
 							  		<div class="row form-group">
-							  			<label for="jumlah" class="col-sm-8 col-form-label">Jumlah</label>
+							  			<label for="jumlahMedicalSupplies" class="col-sm-8 col-form-label">Jumlah</label>
 									   	<div class="col-sm-3">
-									   		<p th:text="${perencanaan.jumlah}"></p>
+									   		<p th:text="${perencanaan.jumlahMedicalSupplies}"></p>
 									   	</div>
 							  		</div>
 							  		
@@ -53,7 +53,7 @@
 									<input type="hidden" name="nama" th:value="'sebuah perencanaan'">
 									
 									<div class="form-group row">
-									   <label for="jumlah" class="col-sm-8 col-form-label">Status</label>
+									   <label for="jumlahMedicalSupplies" class="col-sm-8 col-form-label">Status</label>
 									   <div class="col-sm-3">
 									   		<select class="form-control" required="required" name="status" id="jenisKelamin">
 							                    <option disabled="disabled" selected="selected" th:text="${perencanaan.status}"></option>
