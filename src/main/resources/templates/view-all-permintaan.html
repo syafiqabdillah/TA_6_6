@@ -36,7 +36,7 @@
         <tr th:each="detail : ${detail}">
             <td th:text="${detail.permintaan.tanggal}"></td>
             <td th:text="${detail.permintaan.medicalSupplies.nama}"></td>
-            <td th:text="${detail.permintaan.jumlah}"></td>
+            <td th:text="${detail.permintaan.jumlahMedicalSupplies}"></td>
             <td th:text="${detail.permintaan.medicalSupplies.jenisMedicalSupplies.jenisMedicalSupplies}"></td>
             <td th:text="${detail.permintaan.statusPermintaan.nama}"></td>
             <td th:text="${detail.namaStaff}"></td>
