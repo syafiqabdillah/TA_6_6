@@ -79,12 +79,8 @@
 									Lihat Detail Permintaan
 								</div>
 								<div class="card-body">
-									<form th:action="@{/medical-supplies/permintaan/}" method="get">
-										<div>
-											<button type="submit" class="btn btn-primary">Lihat
-												Permintaan</button>
-										</div>
-									</form>
+									<a th:href="@{/medical-supplies/permintaan/}"
+										class="btn btn-primary">Lihat Permintaan</a>
 								</div>
 							</div>
 						</div>
@@ -96,13 +92,8 @@
 									Lihat Detail Perencanaan
 								</div>
 								<div class="card-body">
-									<form th:action="@{/medical-supplies/perencanaan/}"
-										method="get">
-										<div>
-											<button type="submit" class="btn btn-primary">Lihat
-												Perencanaan</button>
-										</div>
-									</form>
+									<a th:href="@{/medical-supplies/perencanaan/}"
+										class="btn btn-primary">Lihat Perencanaan</a>
 								</div>
 							</div>
 						</div>
@@ -123,13 +114,7 @@
 									Tambah Jadwal Jaga
 								</div>
 								<div class="card-body">
-									<form th:action="@{/medical-supplies/jadwal-staf/tambah}"
-										method="get">
-										<div>
-											<button type="submit" class="btn btn-primary">Tambah
-												Jadwal</button>
-										</div>
-									</form>
+									<a class="btn btn-primary" th:href="@{/medical-supplies/jadwal-staf/tambah}">Tambah Jadwal</a>
 								</div>
 							</div>
 						</div>
@@ -141,13 +126,7 @@
 									Lihat Jadwal Jaga
 								</div>
 								<div class="card-body">
-									<form th:action="@{/medical-supplies/jadwal-staf/}"
-										method="get">
-										<div>
-											<button type="submit" class="btn btn-primary">Lihat
-												Jadwal</button>
-										</div>
-									</form>
+									<a class="btn btn-primary" th:href="@{/medical-supplies/jadwal-staf/}">Lihat Jadwal</a>
 								</div>
 							</div>
 						</div>
