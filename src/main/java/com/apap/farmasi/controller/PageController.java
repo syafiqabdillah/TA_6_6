@@ -1,18 +1,21 @@
 package com.apap.farmasi.controller;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
+
 import com.apap.farmasi.model.DetailMedicalSuppliesLabModel;
 import com.apap.farmasi.model.MedicalSuppliesModel;
 import com.apap.farmasi.model.PerencanaanModel;
@@ -31,6 +34,8 @@ public class PageController {
 		List<MedicalSuppliesModel> listMedicalSupplies = new ArrayList<>();
 		PerencanaanModel perencanaan = new PerencanaanModel();
 		java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+	    DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+	    String formattedDate=dateFormat.format(date);
 		perencanaan.setTanggal(date);
 		if (minggu1Atau3()) {
 			System.out.println("ini minggu 1 atau 3");
