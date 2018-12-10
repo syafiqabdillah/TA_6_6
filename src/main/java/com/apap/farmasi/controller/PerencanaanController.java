@@ -36,6 +36,7 @@ public class PerencanaanController {
 	@RequestMapping(value = "/medical-supplies/perencanaan", method = RequestMethod.GET)
 	private String view(Model model) {
 		List<PerencanaanModel> listPerencanaan = perencanaanService.getAll();
+		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String authority = authentication.getAuthorities().iterator().next().getAuthority();
 		model.addAttribute("authority", authority);
