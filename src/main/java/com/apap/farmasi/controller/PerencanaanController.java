@@ -61,6 +61,10 @@ public class PerencanaanController {
 		}
 		List<PerencanaanModel> listPerencanaan = perencanaanService.getAll();
 		model.addAttribute("listPerencanaan", listPerencanaan);
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String authority = authentication.getAuthorities().iterator().next().getAuthority();
+		model.addAttribute("authority", authority);
+		model.addAttribute("listPerencanaan", listPerencanaan);
 		return "view-perencanaan-pembelian-medical-supplies";
 	}
 	
